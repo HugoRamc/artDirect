@@ -10,4 +10,16 @@
  */
 public class index {
     
+
+	public void mensaje(){
+
+		System.out.println("Cambios");
+
+
+	}
+
 }
+
+
+
+ 	
