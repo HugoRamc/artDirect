@@ -14,7 +14,12 @@ public class index {
 	public void mensaje(){
 
 		System.out.println("Cambios");
-
+                
+                
+                for(int i=0;i<10;i++)
+                {
+                    System.out.println("Hola");
+                }
 
 	}
 
