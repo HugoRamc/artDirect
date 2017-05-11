@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+	.body{
+		background: imagen1.jpg;
+
+
+
+	}
+
+	.estilo1{
+
+		background:#9A9A9C;
+		color:white;
+		font-family: Arial Black;
+		font-size: 28 px;
+		text-align: center;
+		height: 900 ;
+		width: 900 ;
+		 border: white 5px solid;
+
+	}
+
+	.estilo2{
+		background: #F8F8F8;
+		color: black;
+		font-family: Arial ;
+		font-size: 17 px;
+		text-align: center;
+
+	}
+	.estilo3{
+
+		
+		color:white;
+		font-family: Arial Black;
+		font-size: 28 px;
+		text-align: center;
+		height: 900 ;
+		width: 900 ;
+		 border: white 5px solid;
+
+	}
+
+	.boton1{
+		background:#76A2F9;
+		color:white;
+
+
+	}
+	.formulario{
+		background:#9A9A9C;
+		color:white;
+		font-family: Arial Black;
+		font-size: 28 px;
+		text-align: center;
+
+
+
+	}
+	</style>
+	<title></title>
+</head>
+<body background="2.jpg">
+
+<table align="center">
+<tr>
+<td><p class="estilo1">Registrate Cinefilo</p><hr>
+<p class="estilo3">Nombre <input type="text" name="Nombre">
+<p class="estilo3">Apellidos <input type="text" name="Apellidos">
+<p class="estilo3">Avatar <input type="email" name="email" required/>
+<p class="estilo3">Avatar <input type="text" name="Avatar">
+<p class="estilo3">Tipo de Usuario<select name="tipo">
+
+<option>Cinefilo</option>
+
+<option>Cineasta</option>
+
+<option>Administrador</option>
+
+</select>
+<p class="estilo3">Password<input type="password" name="password" required/>
+<p class="estilo3">Confirmar Password<input type="password" name="password" required/>
+
+
+<p class="estilo3"><input type=button onclick="pregunta()"  class="boton1" value="Enviar Registro">
+
+
+
+
+
+
+</table>
+<script language="JavaScript"> 
+function pregunta(){ 
+    if (confirm('¿Estas seguro de enviar este formulario?')){ 
+       document.tuformulario.submit() 
+    } 
+} 
+</script>
+
+</body>
+</html>
