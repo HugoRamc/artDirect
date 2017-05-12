@@ -1,0 +1,102 @@
+*,html,body,header,a
+{
+    font-family: Arial !important;
+    /*background-color: #EEEEEE;*/
+}
+
+ul > li
+{
+    padding-left: 1vw;
+    display: inline-block;
+
+}
+
+nav
+{
+    width: 50vw;
+}
+
+a,a:link,a:visited,a:hover,a:active
+{
+    text-decoration: none;
+}
+
+.btn1
+{
+    display: table-cell;
+    align-items: center;
+    vertical-align: middle;
+    background-color: #21D369;
+    color: whitesmoke;
+    width: 5vw;
+    text-decoration: none;
+    height: 5vh;
+    justify-content: center;
+    align-items: center;
+
+
+
+}
+.btn2
+{
+    display: table-cell;
+    align-items: center;
+    vertical-align: middle;
+    color: #21D369;
+    background-color: whitesmoke;
+    width: 5vw;
+    text-decoration: none;
+    height: 5vh;
+    justify-content: center;
+
+}
+
+
+section > img
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 99vw;
+    height: 70vh;
+    padding-bottom: 5vh;
+}
+
+header > div
+{
+    display: inline-block;
+    padding-left: 30vw;
+
+}
+
+header >div:first-child
+{
+        padding-left: 5vw !important;
+}
+
+header
+{
+    /*border-color: blue;
+    border-style: dashed;*/
+    display: flex;
+    align-items: center;
+
+}
+
+.row
+{
+    width: 93vw;
+    border-color: pink;
+    border-style: dashed;
+    padding-left:3vw;
+    padding-right: 3vw;
+}
+section > div
+{
+    display: table-cell;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    border-color: blue;
+    border-style: dashed;
+    width: 20vw;
+}
