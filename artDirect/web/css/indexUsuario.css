@@ -5,7 +5,7 @@ body {
     line-height: 1.3;
     font-family: Arial, Helvetica, Sans-Serif;
     color: #ccc;
-    background: url('images/body-bg.gif');
+    background: url('images/indexUsuario/body-bg.gif');
 }
 
 a { color: #e7b038; text-decoration: underline; cursor:pointer; }
@@ -31,7 +31,7 @@ h4 { font-size:14px; color:#f3b12b; font-weight:bold; }
 #header { position:relative; }
 
 h1#logo { position:absolute; top:20px; left:0; }
-h1#logo a { float:left; width:239px; height:66px; background:url('images/logo.png') no-repeat 0 0; font-size: 0; line-height: 0; text-indent: -4000px; }
+h1#logo a { float:left; width:239px; height:66px; background:url('images/indexUsuario/logo.png') no-repeat 0 0; font-size: 0; line-height: 0; text-indent: -4000px; }
 
 #navegacion { float:right; clear:right; padding-top:28px; padding-bottom:47px; }
 #navegacion ul { list-style:none; }
@@ -62,7 +62,7 @@ h1#logo a { float:left; width:239px; height:66px; background:url('images/logo.pn
 .pelicula-imagen { float:left; width:152px; height:214px; position:relative; }
 .pelicula-imagen img { width:152px; height:214px; }
 .pelicula-imagen a { float: left; display: inline; width:152px; height:214px; position: relative; z-index: 2; }
-.play { position: absolute; top: 0; left: 0; width:152px; height:214px; background: url('images/image-hover.png'); display:block; z-index: 5; cursor:pointer; display:none; }
+.play { position: absolute; top: 0; left: 0; width:152px; height:214px; background: url('images/indexUsuario/image-hover.png'); display:block; z-index: 5; cursor:pointer; display:none; }
 .pelicula span.nombre { font-weight:bold; color:#fff; font-size:14px; text-align:center; padding-top:160px; display:block; }
 
 .caja .ultima { padding:0; }
