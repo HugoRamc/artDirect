@@ -42,8 +42,6 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -71,6 +69,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </div>\n");
       out.write("        </header>\n");
       out.write("        <section>\n");
+      out.write("\n");
       out.write("            <section>\n");
       out.write("                <img src=\"images/palomitas.jpg\" alt=\"\">\n");
       out.write("            </section>\n");
@@ -90,7 +89,12 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            </section>\n");
       out.write("        </section>\n");
       out.write("        <footer>\n");
+      out.write("            <div id=\"myModal\" class=\"modal\">\n");
+      out.write("                <div class=\"modal-content\">\n");
+      out.write("                    text in the modal\n");
       out.write("\n");
+      out.write("                </div>\n");
+      out.write("            </div>\n");
       out.write("        </footer>\n");
       out.write("    </body>\n");
       out.write("</html>\n");

@@ -1,9 +1,3 @@
-<%--
-    Document   : index
-    Created on : 9/05/2017, 12:29:47 PM
-    Author     : tevod
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,11 +5,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index</title>
         <link rel="stylesheet" href="css/index.css">
+        <script type="text/javascript" src="js/index.js"></script>
     </head>
     <body>
         <header>
             <div class="">
-                <img src="images/logo.PNG" alt="">
+                <img src="images/logo.png" alt="">
             </div>
             <div class="">
                 <nav>
@@ -25,7 +20,7 @@
                         <li class="btn1"><a href="#" >Peliculas</a></li>
                         <li class="btn2"><a href="#" >Series</a></li>
                         <li class="btn1"><a href="#" >Contacto</a></li>
-                        <li class="btn2"><a href="#">Iniciar Sesión</a></li>
+                        <li class="btn2"><input id="btnInicio" type="button" value="Iniciar Sesión" onclick="openModal()"/></li>
                         <li class="btn1"><a href="#">Registrarse</a></li>
                     </ul>
                 </nav>
@@ -51,14 +46,42 @@
                 </div>
             </section>
         </section>
-        <section>
-            <div class="modal">
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Iniciar Sesión
+                    <span class="close" id="close" onclick="closeModal()">&times;</span>
+                </div>
+                <div class="modal-text">
+                    Nombre de Usuario o Correo electrónico <br>
+                    <input type="text" id="txtCorreo" value=""><br>
+                    Contraseña <br>
+                    <input type="text" id="txtContra" value="">
+                </div>
+                <div class="modal-footer">
+
+                </div>
 
             </div>
-        </section>
-
+        </div>
         <footer>
+            About Us:
+            <section class="row">
+                <div class="">
+                    Jesus Magadán
+                </div>
+                <div class="">
+                    Hugo Ramírez
+                </div>
+                <div class="">
+                    Ángel Soto
+                </div>
+                <div class="">
+                    Sebastian Saldaña
+                </div>
+            </section>
 
         </footer>
     </body>
+
 </html>
