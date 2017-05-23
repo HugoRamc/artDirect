@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Cat√°logo</title>
+	<title>Cat·logo</title>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="css/indexUsuario.css" type="text/css" media="all" />
         <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>

@@ -1,11 +1,11 @@
-		
+
 			.uno{
 
 				font-family: Arial;
-				font-size: 18px; 
-				text-align: center;
+				font-size: 18px;
+				
 				color: #FFFFFF;
-				background: #727579;
+				background: #8E9B97;
 
 				-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
@@ -14,12 +14,12 @@ border-radius: 12px 12px 12px 12px;
 -moz-border-radius: 12px 12px 12px 12px;
 -webkit-border-radius: 12px 12px 12px 12px;
 border: 0px solid #000000;
-
+                        width: 30%;
 			}
 			.dos{
 				font-family: Arial;
 				font-size: 13 px;
-				background: #2675D5;
+				background: #F4EBDB;
 				text-align: center;
 
 
@@ -37,4 +37,36 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b4ddb4', end
 	            box-shadow: 0px 4px 4px rgba(34,62,66,.5);
 	          -webkit-transition: box-shadow 1s ease;
 	        transition: box-shadow 1s ease;
+          }
+
+
+
+          form{
+              padding-top: 2vh !important;
+          }
+
+          h1:first-child{
+              padding-bottom: 3vh;
+          }
+          
+          #fila1{
+              padding-top: 3vh !important;
+          }
+          
+          #abajo{
+              padding-bottom: 3vh;
+          }
+          
+          input{
+              max-width: 60%;
+          }
+          
+          td{
+              padding-left: 2vw!important;
+              padding-right: 2vw !important;
+              
+          }
+          
+          select{
+              height: 5vh;
           }

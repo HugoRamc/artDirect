@@ -1,0 +1,27 @@
+header{
+    background-color: #36454F !important;
+}
+
+a,a:hover,a:visited > header
+{
+    text-decoration: none;
+    color: white !important;
+}
+
+header{
+    border-color: #36454F !important;
+    border-style: dashed !important;
+    
+}
+
+ul > li{
+    padding-left: 1vw;
+    display: inline-block;
+    width: 10vw;
+}
+
+.logoIMG{
+    height: 10vh;
+    width: 7vw;
+    padding-top: 0;
+}

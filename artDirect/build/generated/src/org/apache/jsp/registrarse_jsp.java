@@ -42,8 +42,6 @@ public final class registrarse_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\n");
-      out.write("\n");
-      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -81,12 +79,12 @@ public final class registrarse_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\n");
       out.write("\n");
       out.write("</table>\n");
-      out.write("<script language=\"JavaScript\"> \n");
-      out.write("function pregunta(){ \n");
-      out.write("    if (confirm('¿Estas seguro de enviar este formulario?')){ \n");
-      out.write("       document.tuformulario.submit() \n");
-      out.write("    } \n");
-      out.write("} \n");
+      out.write("<script language=\"JavaScript\">\n");
+      out.write("function pregunta(){\n");
+      out.write("    if (confirm('¿Estas seguro de enviar este formulario?')){\n");
+      out.write("       document.tuformulario.submit()\n");
+      out.write("    }\n");
+      out.write("}\n");
       out.write("</script>\n");
       out.write("\n");
       out.write("    </body>\n");
