@@ -26,7 +26,7 @@
 
 .row2
 {
-    width: 99vw;
+    /*width: 99vw;*/
     padding-left:3vw;
     padding-right: 2vw;
     background-color: #8e9b97;
@@ -37,7 +37,7 @@
 .row3
 {
     padding-left: 15vw;
-    width: 99vw;
+    /*width: 99vw;*/
     align-items: center !important;
     background-color: #8e9b97;
     text-align: center;
@@ -55,7 +55,6 @@ section > div
 
 .modal-header{
     background-color: #8e9b97;
-    height: 4vh;
     color: white;
     text-indent: 4px;
 }
@@ -67,7 +66,6 @@ section > div
 
 .modal-footer{
     background-color: #8e9b97;
-    height: 5vh;
 }
 
 

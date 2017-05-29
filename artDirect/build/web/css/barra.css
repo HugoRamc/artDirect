@@ -1,6 +1,18 @@
 header{
     background-color: #36454F !important;
 }
+.navbar-custom {
+    background: #36454F;
+    margin-bottom:0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.navbar-brand {
+    padding: 0;
+}
+.nav-bar-image {
+    width: 65px;
+}
 
 a,a:hover,a:visited > header
 {
