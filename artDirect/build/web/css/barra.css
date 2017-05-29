@@ -1,6 +1,3 @@
-header{
-    background-color: #36454F !important;
-}
 .navbar-custom {
     background: #36454F;
     margin-bottom:0;
@@ -13,18 +10,16 @@ header{
 .nav-bar-image {
     width: 65px;
 }
-
+.navbar-nav > li > a, .navbar-nav > li > a:visited, .navbar-nav  > li > a:hover{
+    color: white;
+    text-decoration: none;
+}
+/*
 a,a:hover,a:visited > header
 {
     text-decoration: none;
     color: white !important;
-}
-
-header{
-    border-color: #36454F !important;
-    border-style: dashed !important;
-    
-}
+}*/
 
 ul > li{
     padding-left: 1vw;
