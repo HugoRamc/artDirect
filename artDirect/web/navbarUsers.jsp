@@ -16,16 +16,16 @@
                     System.out.println("PREMIUM");
                 %>
                 <li>
-                    <a href="#">Inicio</a>
+                    <a href="index.jsp">Inicio</a>
                 </li>
                 <li>
-                    <a href="#">Peliculas</a>
+                    <a href="peliculas.jsp">Peliculas</a>
                 </li>
                 <li>
-                    <a href="#">Series</a>
+                    <a href="series.jsp">Series</a>
                 </li>
                 <li>
-                    <a href="#">Favoritos</a>
+                    <a href="favoritos.jsp">Favoritos</a>
                 </li>
                 <%
                 if (tipo == "artista") {

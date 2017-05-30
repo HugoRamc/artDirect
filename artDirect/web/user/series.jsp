@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" import="org.apache.jasper.JasperException"%>
 <%-- 
-    Document   : favoritos (su nombre lo dice)
-    Created on : 29/05/2017, 09:43:57 PM
+    Document   : serie lo mismo que catalogo pero solo series
+    Created on : 29/05/2017, 09:43:33 PM
     Author     : tona
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Mis Favoritos</title>
+        <title>Series</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -20,7 +20,7 @@
         <%@include file="../navbarUsers.jsp" %>
         <div class="container">
             <div class="page-header">
-                <h2>Favoritos</h2>
+                <h2>Series cheveres</h2>
             </div>
             <div class = "list-group">
 
