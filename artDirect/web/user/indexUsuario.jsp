@@ -1,8 +1,9 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" import="org.apache.jasper.JasperException"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Cat�logo</title>
-	<meta charset="utf-8" />
+	<title>Catálogo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<link rel="stylesheet" href="css/indexUsuario.css" type="text/css" media="all" />
         <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
 	<script type="text/javascript" src="js/indexUsuario.js"></script>
@@ -29,14 +30,14 @@
 		<div id="sub-navegacion">
 			<ul>
 			    <li><a href="#">MOSTRAR TODAS</a></li>
-			    <li><a href="#">MÁS VISTAS</a></li>
-			    <li><a href="#">MÁS NUEVAS</a></li>
+			    <li><a href="#">MÃS VISTAS</a></li>
+			    <li><a href="#">MÃS NUEVAS</a></li>
 			    <li><a href="#">MEJOR CALIFICADAS</a></li>
 			</ul>
 			<div id="busqueda">
 				<form action="home_submit" method="get" accept-charset="utf-8">
-					<label for="campo-busqueda">BÚSQUEDA</label>					
-					<input type="text" name="campo busqueda" value="Ingresa tu búsqueda" id="campo-busqueda" title="Ingresa tu búsqueda" class="blink campo-busqueda"  />
+					<label for="campo-busqueda">BÃSQUEDA</label>					
+					<input type="text" name="campo busqueda" value="Ingresa tu bÃºsqueda" id="campo-busqueda" title="Ingresa tu bÃºsqueda" class="blink campo-busqueda"  />
 					<input type="submit" value="BUSCAR" class="boton-busqueda" />
 				</form>
 			</div>
@@ -54,7 +55,7 @@
 			<!-- Caja -->
 			<div class="caja">
 				<div class="head">
-					<h2>MÁS VISTAS</h2>
+					<h2>MÃS VISTAS</h2>
 					<p class="texto-derecha"><a href="#">Ver todas</a></p>
 				</div>
 
@@ -114,7 +115,7 @@
 			<!-- Caja -->
 			<div class="caja">
 				<div class="head">
-					<h2>MÁS NUEVAS</h2>
+					<h2>MÃS NUEVAS</h2>
 					<p class="texto-derecha"><a href="#">Ver todas</a></p>
 				</div>
 
@@ -240,8 +241,8 @@
 			<a href="#">INICIO</a> |
 			<a href="#">MI CUENTA</a> |
 			<a href="#">PELICULAS</a> |
-			<a href="#">MÁS VISTAS </a> |
-			<a href="#">MÁS NUEVAS</a> |
+			<a href="#">MÃS VISTAS </a> |
+			<a href="#">MÃS NUEVAS</a> |
 			<a href="#">MEJOR CALIFICADAS</a> |
 			<a href="#">CONTACTO</a>
 		</p>
