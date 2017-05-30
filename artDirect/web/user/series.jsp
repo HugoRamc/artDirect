@@ -23,7 +23,7 @@
                 <h2>Series cheveres</h2>
             </div>
             <div class = "list-group">
-
+            
                 <a href = "#" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
                         Pelicula generica
