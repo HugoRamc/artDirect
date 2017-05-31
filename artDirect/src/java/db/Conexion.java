@@ -1,17 +1,23 @@
+package db;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 
-import java.sql.*;
 
-public class conexion
+
+public class Conexion
 {
-    String nomBase="artDirect";
+    String nomBase="artdirect";
     String user="root";
     String pass = "root";
     String server = "localhost";
     Connection c;
     Statement s;
     
-    public conexion() throws Exception 
+    public Conexion() throws Exception 
     {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
         c=DriverManager.getConnection("jdbc:mysql://"+server+"/"+nomBase,user,pass); 

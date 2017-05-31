@@ -1,10 +1,23 @@
+<%@page import="logica.Pelicula"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="db.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="org.apache.jasper.JasperException"%>
 <%-- 
     Document   : serie lo mismo que catalogo pero solo series
     Created on : 29/05/2017, 09:43:33 PM
     Author     : tona
 --%>
-
+<%
+    Conexion con = new Conexion();
+    ResultSet rs = con.consulta("spGetAllPeliculas");
+    if (rs == null){
+        System.out.println("NULL");
+    }
+    while (rs.next()) {
+        System.out.println(rs.getString("titulo"));
+    }
+    ArrayList<Pelicula> peliculas = new ArrayList<>();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,28 +36,27 @@
                 <h2>Series cheveres</h2>
             </div>
             <div class = "list-group">
-            
+                <%
+                for (Pelicula pel : peliculas) {
+                %>
                 <a href = "#" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
-                        Pelicula generica
-                        <p><small>by <strong>nombreArtistico</strong></small></p>
+                        <%=pel.titulo%><br>
+                        <p><small>by <strong><%=pel.autor%></strong></small></p>
                     </h4>
-                    <span class = "badge">9.5</span>
+                    <span class = "badge"><%=pel.calificacion%></span>
                     <p class = "list-group-item-text">
-                        Tipo: <span class="label label-info">Pelicula</span>  Categoria: <span class="label label-primary">Ciencia Ficción</span>
+                        Tipo: <span class="label label-success"><%=pel.tipo%></span>
+                        Categoria: 
+                        <% for (String valor : pel.categorias) {
+                            System.out.println(valor);
+                        %>
+                            <span class="label label-primary"><%=valor%></span>
+                        <%
+                        }%>
                     </p>
                 </a>
-
-                <a href = "#" class = "list-group-item">
-                    <h4 class = "list-group-item-heading">
-                        Serie Generica<br>
-                        <p><small>by <strong>nombreArtistico</strong></small></p>
-                    </h4>
-                    <span class = "badge">5.2</span>
-                    <p class = "list-group-item-text">
-                        Tipo: <span class="label label-success">Serie</span>  Categoria: <span class="label label-primary">Drama</span>
-                    </p>
-                </a>
+                <%}%>
             </div>
         </div>
     </body>
