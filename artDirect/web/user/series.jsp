@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="logica.Pelicula"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="db.Conexion"%>
@@ -8,15 +9,6 @@
     Author     : tona
 --%>
 <%
-    Conexion con = new Conexion();
-    ResultSet rs = con.consulta("spGetAllPeliculas");
-    if (rs == null){
-        System.out.println("NULL");
-    }
-    while (rs.next()) {
-        System.out.println(rs.getString("titulo"));
-    }
-    ArrayList<Pelicula> peliculas = new ArrayList<>();
 %>
 <!DOCTYPE html>
 <html>
@@ -36,28 +28,32 @@
                 <h2>Series cheveres</h2>
             </div>
             <div class = "list-group">
-                <%
-                for (Pelicula pel : peliculas) {
-                %>
+
                 <a href = "#" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
-                        <%=pel.titulo%><br>
-                        <p><small>by <strong><%=pel.autor%></strong></small></p>
+                        Serie generica
+                        <p><small>by <strong>nombreArtistico</strong></small></p>
                     </h4>
-                    <span class = "badge"><%=pel.calificacion%></span>
+                    <span class = "badge">9.5</span>
                     <p class = "list-group-item-text">
-                        Tipo: <span class="label label-success"><%=pel.tipo%></span>
-                        Categoria: 
-                        <% for (String valor : pel.categorias) {
-                            System.out.println(valor);
-                        %>
-                            <span class="label label-primary"><%=valor%></span>
-                        <%
-                        }%>
+                        Tipo: <span class="label label-info">Pelicula</span>  Categoria: <span class="label label-primary">Ciencia Ficción</span>
                     </p>
                 </a>
-                <%}%>
+
+                <a href = "#" class = "list-group-item">
+                    <h4 class = "list-group-item-heading">
+                        Serie Generica 2<br>
+                        <p><small>by <strong>nombreArtistico</strong></small></p>
+                    </h4>
+                    <span class = "badge">5.2</span>
+                    <p class = "list-group-item-text">
+                        Tipo: <span class="label label-success">Serie</span>  Categoria: <span class="label label-primary">Drama</span>
+                    </p>
+                </a>
             </div>
+            
+            
         </div>
+            
     </body>
 </html>

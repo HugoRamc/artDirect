@@ -3,6 +3,7 @@ package db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 
@@ -41,6 +42,11 @@ public class Conexion
         
         return rs;
     }
+    // Este metodo deberia ser temporal, lo puse porque el metodo de arriba lo manda todo como String
+    public ResultSet consultaInt(String sp) throws SQLException {
+        ResultSet rs = s.executeQuery(sp);
+       return rs;
+    }
     
     private String cargaParametros(Object... data)
     {
@@ -55,6 +61,10 @@ public class Conexion
         
         
         return salida;
+    }
+
+    private ResultSet executeQuery(String sp) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
