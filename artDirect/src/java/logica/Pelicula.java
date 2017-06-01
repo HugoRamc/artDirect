@@ -56,6 +56,12 @@ public class Pelicula {
     public void setCategorias() throws Exception {
         Conexion con = new Conexion();
         ResultSet rs = con.consultaInt("call spGetCategorias("+this.id+")");
+        /*select c.categoria 
+    from tblcategorias t 
+    inner join ctgcategoriafilme c 
+    on c.idCatFilme=t.idCatFilme
+    and t.idFilme =idpeli;*/
+
         while (rs.next()) {
             String categoria = rs.getString("categoria");
             System.out.println(categoria);

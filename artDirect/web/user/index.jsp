@@ -13,6 +13,12 @@
     // Aqui declarar las variables de sesion para poder mostrar el menu correcto de navbarUsers y redirigir a otra pagina de ser necesario
     Conexion con = new Conexion();
     ResultSet rs = con.consulta("spGetAllPeliculas");
+    /*
+select f.idFilme, f.titulo, f.puntuacion, cine.nombreArtistico, f.tipo 
+from tblfilme f 
+inner join tbldirectores d on d.idFilme=f.idFilme
+inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
+    */
     if (rs == null){
         System.out.println("NULL");
     }
