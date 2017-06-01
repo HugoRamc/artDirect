@@ -55,7 +55,7 @@ public class Pelicula {
     
     public void setCategorias() throws Exception {
         Conexion con = new Conexion();
-        ResultSet rs = con.consultaInt("call spGetCategorias("+this.id+")");
+        ResultSet rs = con.consulta("spGetCategorias",this.id);
         /*select c.categoria 
     from tblcategorias t 
     inner join ctgcategoriafilme c 

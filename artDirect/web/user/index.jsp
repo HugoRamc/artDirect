@@ -28,7 +28,7 @@ inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
         pel.setId(rs.getInt("idFilme"));
         pel.setTitulo(rs.getString("titulo"));
         pel.setCalificacion(rs.getDouble("puntuacion"));
-        pel.setAutor(rs.getString("nombreArtistico"));
+        //pel.setAutor(rs.getString("nombreArtistico"));
         pel.setTipo(rs.getInt("tipo"));
         peliculas.add(pel);
         pel.setCategorias();

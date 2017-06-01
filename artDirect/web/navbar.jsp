@@ -28,14 +28,14 @@
                 <h4 class="modal-title" id="lineModalLabel">Iniciar Sesión</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="redirige.jsp" method="post">
                     <div class="form-group">
                         <label for="login-email">Correo electrónico</label>
-                        <input type="email" class="form-control" id="login-email">
+                        <input type="email" class="form-control" name="login-email">
                     </div>
                     <div class="form-group">
                         <label for="login-pass">Contraseña</label>
-                        <input type="password" class="form-control" id="login-pass">
+                        <input type="password" class="form-control" name="login-pass">
                     </div>
                     <input type="submit" class="btn btn-info" name="login-submit" value="Iniciar Sesión">
                     <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cerrar">
