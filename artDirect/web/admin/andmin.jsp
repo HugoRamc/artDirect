@@ -1,4 +1,6 @@
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="db.Conexion"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -104,18 +106,31 @@
                 </div>
                 <br>
                 <table class="table table-striped table-hover">
-                      <tr>
+                    <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Joined</th>
+                        <th>Password</th>
+                       
                         <th></th>
                       </tr>
+                    <%
+                        Conexion con = new Conexion();
+                        ResultSet s = con.consulta("spMuestraUsuarios");
+                        
+                        while(s.next()){
+                    %>
+                      
                       <tr>
-                        <td>Juancho Momo</td>
-                        <td>juanchilaquil@gmail.com</td>
-                        <td>Mayo 19, 2017</td>
+                        <td><%out.print(s.getString("nombre"));      %></td>
+                        <td><%out.print(s.getString("idUsuario"));      %></td>
+                        <td><%out.print(s.getString("pass"));      %></td>
                         <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
                       </tr>
+                      
+                      <%
+                      }
+                      %>
+                      
                     </table>
 					 <form id="login list-group-item" action="altas" method="POST" class="well">
                 <div class="form-group">
