@@ -3,6 +3,8 @@ package org.apache.jsp.admin;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import java.sql.ResultSet;
+import db.Conexion;
 
 public final class andmin_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -46,6 +48,8 @@ public final class andmin_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
+      out.write("\r\n");
+      out.write("\r\n");
       out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html lang=\"en\">\r\n");
@@ -191,18 +195,41 @@ public final class andmin_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                </div>\r\n");
       out.write("                <br>\r\n");
       out.write("                <table class=\"table table-striped table-hover\">\r\n");
-      out.write("                      <tr>\r\n");
+      out.write("                    <tr>\r\n");
       out.write("                        <th>Name</th>\r\n");
       out.write("                        <th>Email</th>\r\n");
-      out.write("                        <th>Joined</th>\r\n");
+      out.write("                        <th>Password</th>\r\n");
+      out.write("                       \r\n");
       out.write("                        <th></th>\r\n");
       out.write("                      </tr>\r\n");
+      out.write("                    ");
+
+                        Conexion con = new Conexion();
+                        ResultSet s = con.consulta("spMuestraUsuarios");
+                        
+                        while(s.next()){
+                    
+      out.write("\r\n");
+      out.write("                      \r\n");
       out.write("                      <tr>\r\n");
-      out.write("                        <td>Juancho Momo</td>\r\n");
-      out.write("                        <td>juanchilaquil@gmail.com</td>\r\n");
-      out.write("                        <td>Mayo 19, 2017</td>\r\n");
+      out.write("                        <td>");
+out.print(s.getString("nombre"));      
+      out.write("</td>\r\n");
+      out.write("                        <td>");
+out.print(s.getString("idUsuario"));      
+      out.write("</td>\r\n");
+      out.write("                        <td>");
+out.print(s.getString("pass"));      
+      out.write("</td>\r\n");
       out.write("                        <td><a class=\"btn btn-default\" href=\"edit.html\">Edit</a> <a class=\"btn btn-danger\" href=\"#\">Delete</a></td>\r\n");
       out.write("                      </tr>\r\n");
+      out.write("                      \r\n");
+      out.write("                      ");
+
+                      }
+                      
+      out.write("\r\n");
+      out.write("                      \r\n");
       out.write("                    </table>\r\n");
       out.write("\t\t\t\t\t <form id=\"login list-group-item\" action=\"altas\" method=\"POST\" class=\"well\">\r\n");
       out.write("                <div class=\"form-group\">\r\n");
