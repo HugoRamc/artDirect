@@ -9,21 +9,11 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+    <link rel="stylesheet" href="../css/barra.css">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
 </style></head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Administrador ARTDIRECT</a>
-        </div>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Bienvenido <% %></a></li>
-            <li><a href="login.html">salir</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      <%@include file = "navBaradmin.jsp" %>
 
     <header id="header">
       <div class="container">
