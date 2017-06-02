@@ -1,4 +1,6 @@
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="db.Conexion"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,21 +11,11 @@
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/style.css" rel="stylesheet">
     <script src="http://cdn.ckeditor.com/4.6.1/standard/ckeditor.js"></script>
+    <link rel="stylesheet" href="../css/barra.css">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style type="text/css">
 </style></head>
   <body>
-    <nav class="navbar navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Administrador ARTDIRECT</a>
-        </div>
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Bienvenido <% %></a></li>
-            <li><a href="login.html">salir</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+      <%@include file = "navBaradmin.jsp" %>
 
     <header id="header">
       <div class="container">
@@ -104,18 +96,31 @@
                 </div>
                 <br>
                 <table class="table table-striped table-hover">
-                      <tr>
+                    <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Joined</th>
+                        <th>Password</th>
+                       
                         <th></th>
                       </tr>
+                    <%
+                        Conexion con = new Conexion();
+                        ResultSet s = con.consulta("spMuestraUsuarios");
+                        
+                        while(s.next()){
+                    %>
+                      
                       <tr>
-                        <td>Juancho Momo</td>
-                        <td>juanchilaquil@gmail.com</td>
-                        <td>Mayo 19, 2017</td>
+                        <td><%out.print(s.getString("nombre"));      %></td>
+                        <td><%out.print(s.getString("idUsuario"));      %></td>
+                        <td><%out.print(s.getString("pass"));      %></td>
                         <td><a class="btn btn-default" href="edit.html">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
                       </tr>
+                      
+                      <%
+                      }
+                      %>
+                      
                     </table>
 					 <form id="login list-group-item" action="altas" method="POST" class="well">
                 <div class="form-group">
