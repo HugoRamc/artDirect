@@ -15,6 +15,7 @@
     </head>
     <body>
         <%
+            // Es mejor si esta parte se mueve a un servlet ya que no se utiliza HTML
             ResultSet s;
             String mail = request.getParameter("login-email");
             String pass = request.getParameter("login-pass");
