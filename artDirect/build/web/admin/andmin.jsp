@@ -90,7 +90,9 @@
                         <td><a class="btn btn-default" href="cambios.jsp">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
                       </tr>
                       
-                      
+                      <%
+                      }
+                      %>
                       
                     </table>
 					
@@ -115,5 +117,5 @@
  </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-  </body>
+    </body>
 </html>

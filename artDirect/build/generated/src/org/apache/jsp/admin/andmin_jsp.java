@@ -204,17 +204,11 @@ out.print(s.getString("tipousuario"));
       out.write("                        <td><a class=\"btn btn-default\" href=\"cambios.jsp\">Edit</a> <a class=\"btn btn-danger\" href=\"#\">Delete</a></td>\r\n");
       out.write("                      </tr>\r\n");
       out.write("                      \r\n");
-      out.write("                      <script language=\"Javascript\">\r\n");
-      out.write("function preguntar(){\r\n");
-      out.write("   eliminar=confirm(\"¿Deseas eliminar este registro?\");\r\n");
-      out.write("   if (eliminar)\r\n");
-      out.write("   //Redireccionamos si das a aceptar\r\n");
-      out.write("     window.location.href = \"delete.php?kdigo=valor\"; //página web a la que te redirecciona si confirmas la eliminación\r\n");
-      out.write("else\r\n");
-      out.write("  //Y aquí pon cualquier cosa que quieras que salga si le diste al boton de cancelar\r\n");
-      out.write("    alert('No se ha podido eliminar el registro...')\r\n");
-      out.write("}\r\n");
-      out.write("</script>\r\n");
+      out.write("                      ");
+
+                      }
+                      
+      out.write("\r\n");
       out.write("                      \r\n");
       out.write("                    </table>\r\n");
       out.write("\t\t\t\t\t\r\n");
@@ -239,7 +233,7 @@ out.print(s.getString("tipousuario"));
       out.write(" </script>\r\n");
       out.write("    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js\"></script>\r\n");
       out.write("    <script src=\"../js/bootstrap.min.js\"></script>\r\n");
-      out.write("  </body>\r\n");
+      out.write("    </body>\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
