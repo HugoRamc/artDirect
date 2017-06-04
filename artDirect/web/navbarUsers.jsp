@@ -45,7 +45,7 @@
                     <a href="favoritos.jsp">Favoritos</a>
                 </li>
                 <li>
-                    <a href="#">Perfil</a>
+                    <a href="perfil.jsp">Perfil</a>
                 </li>
                 <li>
                     <a href="#">Contenido</a>

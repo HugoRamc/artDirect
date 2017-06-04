@@ -24,6 +24,7 @@
                 </div>
             </div> 
             <div class="main-login main-center">
+               <!--Dar de alta al usuario-->
                 <form class="form-horizontal" method="post" action="#">
                     <div class="form-group">
                         <label for="name" class="control-label">Nombre</label>
