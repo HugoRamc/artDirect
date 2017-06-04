@@ -1,5 +1,22 @@
 <!-- Esta barra sera para todos los usuarios (normal, premium, artista y admin)-->
-<%String tipo="artista"; // Esto debe de ser remplazado por una variable de sesion%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="org.apache.jasper.JasperException"%>
+<%@page session="true"%>
+<%// Esto debe de ser remplazado por una variable de sesion
+    //verificar las variables de sesion
+    String tipo = "hola";
+        //Object tipo;
+        Object tip = request.getParameter("tipoUsuario");
+        //out.print(tip);
+        //tipo = request.getParameter("tipoUsuario");
+        if((tipo!=null)){
+           //response.sendRedirect("../index.jsp");
+        
+        
+    
+
+%>
+
+
 <nav class="navbar navbar-inverse navbar-custom">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -8,15 +25,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="."><img src="../images/logo2.png"class="nav-bar-image"></a>
+            <a class="navbar-brand" href="#"><img src="../images/logo2.png"class="nav-bar-image"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <% if (tipo == "premium" || tipo=="artista"){
-                    System.out.println("PREMIUM");
+                <%
+                    
                 %>
                 <li>
-                    <a href="index.jsp">Inicio</a>
+                    <a href="indexU.jsp">Inicio</a>
                 </li>
                 <li>
                     <a href="peliculas.jsp">Peliculas</a>
@@ -27,42 +44,46 @@
                 <li>
                     <a href="favoritos.jsp">Favoritos</a>
                 </li>
-                <%
-                if (tipo == "artista") {
-                    System.out.println("ARTISTA");
-                %>
                 <li>
-                    <a href="#">Mis Obras</a>
-                </li>
-                <%
-                }
-                %>
-                <li>
-                    <a href="#">Perfil</a>
-                </li>
-                <%
-                } else if (tipo == "normal") {
-                    System.out.println("NORMAL");
-                %>
-                <li>
-                    <a href="#">Perfil</a>
-                </li>
-                <%
-                } else if (tipo == "admin") {
-                    System.out.println("ADMIN");
-                %>
-                <li>
-                    <a href="#">Usuarios</a>
+                    <a href="perfil.jsp">Perfil</a>
                 </li>
                 <li>
                     <a href="#">Contenido</a>
                 </li>
+                
+                <%//si el usuario es cineasta
+                    if(tipo!=null)
+                    if(tipo.toString().equals("cineasta")){
+                    %>
+                <li>
+                    <a href="#">Mis Obras</a>
+                </li>
                 <%
-                }
+                    }
+                    if(tipo!=null)
+                    if(tipo.toString().equals("estandar")){
+                    //imprimir parte del usuario estándar
+                    %>
+                <!--<li>
+                    <a href="#">Mis Obras</a>
+                </li>-->
+                <%
+                    }
+                    if(tipo!=null)
+                    if(tipo.toString().equals("premium")){
+                    //imprimir la opcion del usuario premium
+                    %>
+                <!--<li>
+                    <a href="#">Mis Obras</a>
+                </li>-->
+                <%
+                    }
                 %>
+
+                
             </ul>
-            <div class="col-sm-3 col-md-3 navbar-right">
-                <form class="navbar-form" role="search">
+               
+                <form class="navbar-form navbar-left" role="search">
                     <div class="input-group">
                         <input type="search" class="form-control" placeholder="Search" name="q">
                         <div class="input-group-btn">
@@ -70,7 +91,29 @@
                         </div>
                     </div>
                 </form>
-            </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form action="../redirige.jsp" method="post">
+                            <button type="submit" class="close" aria-label="">
+                                Salir
+                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                            </button>
+                            <input type="hidden" name="salir" value="1"/>
+                        </form>
+                </li>
+                    
+                </ul>
+                
+                <%
+                }
+                %>
+            
         </div>
     </div>   
 </nav>
+                <style>
+                    form > button{
+                        color:white !important;
+                        opacity:0.6 !important;
+                    }
+                </style>

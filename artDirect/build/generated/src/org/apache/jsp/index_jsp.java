@@ -48,6 +48,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
       out.write("\r\n");
+      out.write("\r\n");
       out.write("<!DOCTYPE html>\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
@@ -62,6 +63,27 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("    <link rel=\"stylesheet\" href=\"css/barra.css\">\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
+      out.write("    ");
+
+        //traemos los atributos de sesion para validar si ya ha iniciado sesion
+        Object dat = request.getSession().getAttribute("correoUsu");
+        Object dat2 = request.getSession().getAttribute("tipoUsuario");
+        if(dat!=null && dat2!=null){
+            //out.print(dat.toString());
+            if(dat2.toString().equals("administrador")){
+                //si es usuario redirige al administrador
+            }else{
+                //si es usuario normal o cinesta redirecciona a la parte del usuario
+                
+                response.sendRedirect("user/indexU.jsp");
+            }
+                
+            
+            
+        }
+    
+    
+      out.write("\r\n");
       out.write("    ");
       out.write("<nav class=\"navbar navbar-inverse navbar-custom\">\r\n");
       out.write("    <div class=\"container-fluid\">\r\n");
@@ -138,7 +160,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    <img src=\"images/hugo.jpg\" class=\"img-circle img-responsive tamFoto\"/><br>\r\n");
       out.write("                </div>\r\n");
       out.write("                Hugo Ramírez <br>\r\n");
-      out.write("                <a href=\"https://www.twitter.com/Hugoramc\" target=\"_blank\">@Hugoramc</a>\r\n");
+      out.write("                <!--<a href=\"https://www.twitter.com/Hugoramc\" target=\"_blank\">@Hugoramc</a>-->\r\n");
       out.write("            </div>\r\n");
       out.write("            <div class=\"imagen\">\r\n");
       out.write("                <div class=\"centra\">\r\n");

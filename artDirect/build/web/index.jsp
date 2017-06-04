@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" import="org.apache.jasper.JasperException"%>
+<%@page session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +14,25 @@
     <link rel="stylesheet" href="css/barra.css">
 </head>
 <body>
+    <%
+        //traemos los atributos de sesion para validar si ya ha iniciado sesion
+        Object dat = request.getSession().getAttribute("correoUsu");
+        Object dat2 = request.getSession().getAttribute("tipoUsuario");
+        if(dat!=null && dat2!=null){
+            //out.print(dat.toString());
+            if(dat2.toString().equals("administrador")){
+                //si es usuario redirige al administrador
+            }else{
+                //si es usuario normal o cinesta redirecciona a la parte del usuario
+                
+                response.sendRedirect("user/indexU.jsp");
+            }
+                
+            
+            
+        }
+    
+    %>
     <%@include file = "./navbar.jsp" %> <!--Para no poner la barra en cada html-->
     <section>
         <section id="fotoInicio">
@@ -39,7 +59,7 @@
                     <img src="images/hugo.jpg" class="img-circle img-responsive tamFoto"/><br>
                 </div>
                 Hugo Ramírez <br>
-                <a href="https://www.twitter.com/Hugoramc" target="_blank">@Hugoramc</a>
+                <!--<a href="https://www.twitter.com/Hugoramc" target="_blank">@Hugoramc</a>-->
             </div>
             <div class="imagen">
                 <div class="centra">
