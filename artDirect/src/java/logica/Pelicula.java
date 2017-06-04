@@ -39,9 +39,9 @@ public class Pelicula {
 
     public void setTipo(int tipo) {
         if (tipo==0)
-            this.tipo = "Serie";
-        else
             this.tipo = "Pelicula";
+        else
+            this.tipo = "Serie";
     }
 
     public ArrayList<String> getCategorias() {

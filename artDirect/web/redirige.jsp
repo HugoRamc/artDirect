@@ -1,7 +1,7 @@
 <%-- 
     Document   : redirige
     Created on : 31/05/2017, 11:07:55 PM
-    Author     : tevod
+    Author     : hugo
 --%>
 
 <%@page import="java.sql.ResultSet"%>
@@ -16,13 +16,17 @@
     </head>
     <body>
         <%
+
             String salida = request.getParameter("salir");
+
+            // Es mejor si esta parte se mueve a un servlet ya que no se utiliza HTML
+
             
             if(salida!=null){
                 session.invalidate();
                 response.sendRedirect("index.jsp");
             }else{
-                 ResultSet s;
+                ResultSet s;
                 String mail = request.getParameter("login-email");
                 String pass = request.getParameter("login-pass");
 
