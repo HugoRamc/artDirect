@@ -28,7 +28,9 @@
     
     // A esta pagina se deberia de mandar al usuario premium despues de iniciar sesion, y al artista si ya fue aprovado por el admin
     // Aqui declarar las variables de sesion para poder mostrar el menu correcto de navbarUsers y redirigir a otra pagina de ser necesario
+    System.out.println("HOLA 1");
     Conexion con = new Conexion();
+    System.out.println("HOLA 2");
     ResultSet rs = con.consulta("spGetAllPeliculas");
     /*
 select f.idFilme, f.titulo, f.puntuacion, cine.nombreArtistico, f.tipo 
@@ -88,7 +90,6 @@ inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
                         %>
                         Categoria:
                         <%for (String categoria: peli.getCategorias()) {
-                            System.out.println(categoria);
                         %>
                         <span class="label label-primary"><%=categoria%></span>
                         <%

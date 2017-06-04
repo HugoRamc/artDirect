@@ -13,7 +13,7 @@ public class Conexion
 {
     String nomBase="artdirect";
     String user="root";
-    String pass = "magadan";
+    String pass = "root";
     String server = "localhost";
     Connection c;
     Statement s;
@@ -21,7 +21,7 @@ public class Conexion
     public Conexion() throws Exception 
     {
         Class.forName("com.mysql.jdbc.Driver").newInstance();
-        c=DriverManager.getConnection("jdbc:mysql://"+server+"/"+nomBase,user,pass); 
+        c=DriverManager.getConnection("jdbc:mysql://"+server+"/"+nomBase,user,pass);
         s=c.createStatement();
         
     }
@@ -66,6 +66,8 @@ public class Conexion
     private ResultSet executeQuery(String sp) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    
+    // Si hacemos muchas consultas sin cerrar la conexion la base se muere
+    public void cerrar() throws SQLException {
+        this.c.close();
+    }
 }

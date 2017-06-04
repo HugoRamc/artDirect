@@ -21,6 +21,7 @@ public class Pelicula {
     public String autor;
     public double calificacion;
     int id;
+    boolean esFavorito;
     public Pelicula (){
         this.categorias = new ArrayList<>();
     }
@@ -64,7 +65,6 @@ public class Pelicula {
 
         while (rs.next()) {
             String categoria = rs.getString("categoria");
-            System.out.println(categoria);
             this.categorias.add(categoria);
         }
     }
@@ -91,6 +91,14 @@ public class Pelicula {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean getEsFavorito() {
+        return esFavorito;
+    }
+
+    public void setEsFavorito(boolean esFavorito) {
+        this.esFavorito = esFavorito;
     }
     
 }

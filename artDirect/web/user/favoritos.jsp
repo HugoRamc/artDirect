@@ -56,7 +56,7 @@ inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
                 <%
                 for (Pelicula peli : peliculas) {
                 %>
-                <a href = "#" class = "list-group-item">
+                <a href = "/artDirect/Ver?q=<%=peli.getId()%>" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
                         <%=peli.titulo%><br>
                         <p><small>by <strong><%=peli.autor%></strong></small></p>
@@ -72,7 +72,6 @@ inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
                         %>
                         Categoria:
                         <%for (String categoria: peli.getCategorias()) {
-                            System.out.println(categoria);
                         %>
                         <span class="label label-primary"><%=categoria%></span>
                         <%
