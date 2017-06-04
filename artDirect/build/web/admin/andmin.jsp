@@ -79,7 +79,20 @@
                         
                         while(s.next()){
                     %>
-                      
+                       <script language="javascript">
+function confirmDel()
+{
+  var agree=confirm("¿Realmente desea eliminarlo? ");
+  if (agree) return true ;
+  else
+  //Y aquí pon cualquier cosa que quieras que salga si le diste al boton de cancelar
+    alert('No se ha podido eliminar el registro')
+  return false;
+}
+
+
+</script>
+
                       <tr>
                         <td><%out.print(s.getString("nombre"));      %></td>
                         <td><%out.print(s.getString("idUsuario"));      %></td>
@@ -87,7 +100,7 @@
                         <td> <%out.print(s.getString("verificado"));      %></td>
                         <td> <%out.print(s.getString("avatar"));      %></td>
                         <td> <%out.print(s.getString("tipousuario"));      %></td>
-                        <td><a class="btn btn-default" href="cambios.jsp">Edit</a> <a class="btn btn-danger" href="#">Delete</a></td>
+                        <td><a class="btn btn-default" href="cambios.jsp">Edit</a> <a class="btn btn-danger" onclick="confirmDel();" href="andmin.jsp">Delete</a></td>
                       </tr>
                       
                       <%

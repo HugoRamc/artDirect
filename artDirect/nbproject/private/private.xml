@@ -3,16 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
             <file>file:/C:/Users/JESUS/Desktop/artDirect/artDirect/web/navbar.jsp</file>
+            <file>file:/C:/Users/JESUS/Desktop/artDirect/artDirect/web/admin/altaPelicula.jsp</file>
+            <file>file:/C:/Users/JESUS/Desktop/artDirect/artDirect/web/admin/cambios.jsp</file>
             <file>file:/C:/Users/JESUS/Desktop/artDirect/artDirect/web/admin/andmin.jsp</file>
             <file>file:/C:/Users/JESUS/Desktop/artDirect/artDirect/src/java/db/Conexion.java</file>
-=======
-            <file>file:/C:/Users/tevod/OneDrive/Documentos/Escom/4%20semestre/TW/artDirect/artDirect/web/index.jsp</file>
-            <file>file:/C:/Users/tevod/OneDrive/Documentos/Escom/4%20semestre/TW/artDirect/artDirect/web/redirige.jsp</file>
-            <file>file:/C:/Users/tevod/OneDrive/Documentos/Escom/4%20semestre/TW/artDirect/artDirect/web/navbarUsers.jsp</file>
-            <file>file:/C:/Users/tevod/OneDrive/Documentos/Escom/4%20semestre/TW/artDirect/artDirect/web/user/index.jsp</file>
->>>>>>> origin/master
+            <file>file:/C:/Users/JESUS/Desktop/artDirect/artDirect/web/admin/alta.jsp</file>
         </group>
     </open-files>
 </project-private>

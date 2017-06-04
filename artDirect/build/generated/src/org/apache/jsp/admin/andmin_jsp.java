@@ -181,7 +181,20 @@ public final class andmin_jsp extends org.apache.jasper.runtime.HttpJspBase
                         while(s.next()){
                     
       out.write("\r\n");
-      out.write("                      \r\n");
+      out.write("                       <script language=\"javascript\">\r\n");
+      out.write("function confirmDel()\r\n");
+      out.write("{\r\n");
+      out.write("  var agree=confirm(\"¿Realmente desea eliminarlo? \");\r\n");
+      out.write("  if (agree) return true ;\r\n");
+      out.write("  else\r\n");
+      out.write("  //Y aquí pon cualquier cosa que quieras que salga si le diste al boton de cancelar\r\n");
+      out.write("    alert('No se ha podido eliminar el registro')\r\n");
+      out.write("  return false;\r\n");
+      out.write("}\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("</script>\r\n");
+      out.write("\r\n");
       out.write("                      <tr>\r\n");
       out.write("                        <td>");
 out.print(s.getString("nombre"));      
@@ -201,7 +214,7 @@ out.print(s.getString("avatar"));
       out.write("                        <td> ");
 out.print(s.getString("tipousuario"));      
       out.write("</td>\r\n");
-      out.write("                        <td><a class=\"btn btn-default\" href=\"cambios.jsp\">Edit</a> <a class=\"btn btn-danger\" href=\"#\">Delete</a></td>\r\n");
+      out.write("                        <td><a class=\"btn btn-default\" href=\"cambios.jsp\">Edit</a> <a class=\"btn btn-danger\" onclick=\"confirmDel();\" href=\"andmin.jsp\">Delete</a></td>\r\n");
       out.write("                      </tr>\r\n");
       out.write("                      \r\n");
       out.write("                      ");
