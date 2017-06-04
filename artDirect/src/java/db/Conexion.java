@@ -13,7 +13,7 @@ public class Conexion
 {
     String nomBase="artdirect";
     String user="root";
-    String pass = "magadan";
+    String pass = "root";
     String server = "localhost";
     Connection c;
     Statement s;
