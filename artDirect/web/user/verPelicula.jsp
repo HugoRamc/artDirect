@@ -49,6 +49,7 @@ if (rs.next()) {
         <%@include file="../navbarUsers.jsp" %>
         <div class="container">
             <div class="page-header">
+                <input type="text" value="<%=pelicula.getId()%>" id="peli-id" hidden>
                 <h2>
                     <%=pelicula.getTitulo()%>
                     <p><small>by <strong>Nana</strong></small></p>
@@ -66,13 +67,9 @@ if (rs.next()) {
                     <h3>Calificación: <span class="label label-default"><%=pelicula.getCalificacion()%></span></h3>
                     <!--Cambiar por favorito y darle color rojo alv con btn-danger-->
                     <% if (pelicula.getEsFavorito()) { %>
-                    <button type="button" class="btn btn-danger" id="btn-fav">
-                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Quitar de Favoritos
-                    </button>
+                    <input type="button" class="btn btn-danger" id="btn-fav" value="Quitar de Favoritos">
                     <% } else {%>
-                    <button type="button" class="btn btn-default" id="btn-fav">
-                        <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Agregar a Favoritos
-                    </button>
+                    <input type="button" class="btn btn-default" id="btn-fav" value="Agregar a Favoritos">
                     <%}%>
                     <p>
                     <div class="form-inline">
@@ -83,5 +80,35 @@ if (rs.next()) {
                 </div>
             </div>
         </div>
+        <br>
+        <script>
+      $("#btn-fav").on('click', function (e) {
+          e.preventDefault();
+          console.log("Hola");
+          
+          $.ajax({
+              url: "/artDirect/Favorito",
+              type: "POST",
+              data: {"film": $('#peli-id').val()},
+              success: function (json) {
+                  console.log("Es favorito: " + json.favorito);
+                  if (json.favorito){
+                      $("#btn-fav").val("Quitar de Favoritos");
+                      $("#btn-fav").addClass("btn-danger");
+                        $("#btn-fav").removeClass("btn-default");
+                  }else{
+                      $("#btn-fav").val("Agregar a Favoritos");
+                      $("#btn-fav").addClass("btn-default");
+                    $("#btn-fav").removeClass("btn-danger");
+                  }
+              },
+              error: function (xhr, errmsg, err) {
+                  console.log("ERROR: " + err);
+                  console.log("ERROR MESSAGE: " + errmsg);
+                  console.log(xhr.status + ': ' + xhr.responseText)
+              }
+          });
+      });
+  </script>
     </body>
 </html>
