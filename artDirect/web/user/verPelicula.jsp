@@ -33,6 +33,7 @@ if (rs.next()) {
         pelicula.setEsFavorito(false);
     }
 }
+con.cerrar();
 %>
 <!DOCTYPE html>
 <html>
@@ -65,7 +66,7 @@ if (rs.next()) {
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <h3>Calificación: <span class="label label-default"><%=pelicula.getCalificacion()%></span></h3>
+                    <h3>Calificación: <span class="label label-default" id="puntaje"><%=pelicula.getCalificacion()%></span></h3>
                     <!--Cambiar por favorito y darle color rojo alv con btn-danger-->
                     <% if (pelicula.getEsFavorito()) { %>
                     <input type="button" class="btn btn-danger" id="btn-fav" value="Quitar de Favoritos">
@@ -102,6 +103,27 @@ if (rs.next()) {
                       $("#btn-fav").addClass("btn-default");
                     $("#btn-fav").removeClass("btn-danger");
                   }
+              },
+              error: function (xhr, errmsg, err) {
+                  console.log("ERROR: " + err);
+                  console.log("ERROR MESSAGE: " + errmsg);
+                  console.log(xhr.status + ': ' + xhr.responseText)
+              }
+          });
+      });
+      $("#btn-calificar").on('click', function (e) {
+          e.preventDefault();
+          $.ajax({
+              url: "/artDirect/Calificar",
+              type: "POST",
+              data: {
+                  "film": $('#peli-id').val(),
+                  "calificacion": $('#puntuacion').val().split(".")[0]
+              },
+              success: function (json) {
+                  console.log("It works?: " + json.ok);
+                  $('#puntaje').text(json.puntuacion);
+                  $('#puntuacion').val(json.puntuacionUsuario);
               },
               error: function (xhr, errmsg, err) {
                   console.log("ERROR: " + err);

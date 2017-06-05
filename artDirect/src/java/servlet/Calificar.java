@@ -5,8 +5,12 @@
  */
 package servlet;
 
+import db.Conexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,19 +33,31 @@ public class Calificar extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("application/json;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Calificar</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet Calificar at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            int peli = Integer.parseInt(request.getParameter("film"));
+            int calificacion = Integer.parseInt(request.getParameter("calificacion")); 
+            Conexion con = new Conexion();
+            ResultSet rs = con.consulta("spPuntua", "mail5@gmail.com", peli, calificacion);
+            if(rs.first()) {
+                System.out.println("Calificacion usuario: "+ rs.getString("resultado"));
+            }
+            
+            rs = con.consulta("spGetScoresFromFilm", peli);
+            int numero = 0;
+            double nuevaPuntuacion = 0;
+            while (rs.next()) {
+                nuevaPuntuacion += rs.getDouble("puntuacion");
+                numero++;
+            }
+            System.out.println("El numero de calificaciones es: " + numero);
+            nuevaPuntuacion = nuevaPuntuacion/numero;
+            nuevaPuntuacion = (double)Math.round(nuevaPuntuacion *10d)/10d;
+            con.consulta("spUpdateScore", peli, nuevaPuntuacion);
+            out.print("{\"puntuacion\":"+nuevaPuntuacion+", \"puntuacionUsuario\":"+calificacion+", \"ok\":true}");
+            con.cerrar();
         }
     }
 
@@ -57,7 +73,11 @@ public class Calificar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Calificar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -71,7 +91,11 @@ public class Calificar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(Calificar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
