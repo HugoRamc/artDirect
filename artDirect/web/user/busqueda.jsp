@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="db.Conexion"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="logica.Pelicula"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="org.apache.jasper.JasperException"%>
 
 
@@ -6,7 +10,24 @@
     Created on : 29/05/2017, 09:44:36 PM
     Author     : tona
 --%>
-
+<%
+String parametro = request.getParameter("q");
+System.out.println("El parametro de busqueda es: " + parametro);
+ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+Conexion con = new Conexion();
+ResultSet rs = con.consulta("spBuscar", parametro);
+while (rs.next()) {
+        Pelicula pel = new Pelicula();
+        pel.setId(rs.getInt("idFilme"));
+        pel.setTitulo(rs.getString("titulo"));
+        pel.setCalificacion(rs.getDouble("puntuacion"));
+        pel.setAutor();
+        pel.setTipo(rs.getInt("tipo"));
+        pel.setCategorias();
+        peliculas.add(pel);
+    }
+con.cerrar();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,32 +43,41 @@
         <%@include file="../navbarUsers.jsp" %>
         <div class="container">
             <div class="page-header">
-                <h2>Resultados de la busqueda</h2>
+                <h2>Resultados de la busqueda: <%=parametro%></h2>
             </div>
+            <%if (peliculas.size() != 0) {%>
             <div class = "list-group">
-
-                <a href = "#" class = "list-group-item">
+                <%
+                for (Pelicula peli : peliculas) {
+                %>
+                <a href ="/artDirect/Ver?q=<%=peli.getId()%>" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
-                        Pelicula generica
-                        <p><small>by <strong>nombreArtistico</strong></small></p>
+                        <%=peli.getTitulo()%><br>
+                        <p><small>by <strong><%=peli.getAutor()%></strong></small></p>
                     </h4>
-                    <span class = "badge">9.5</span>
+                    <span class = "badge"><%=peli.getCalificacion()%></span>
                     <p class = "list-group-item-text">
-                        Tipo: <span class="label label-info">Pelicula</span>  Categoria: <span class="label label-primary">Ciencia Ficción</span>
+                        <% if (peli.getTipo().equals("Pelicula")) {%>
+                        Tipo: <span class="label label-info"><%=peli.getTipo()%></span>
+                        <% }else { %>
+                        Tipo: <span class="label label-success"><%=peli.getTipo()%></span>
+                        <%
+                        }
+                        %>
+                        Categoria:
+                        <%for (String categoria: peli.getCategorias()) {
+                        %>
+                        <span class="label label-primary"><%=categoria%></span>
+                        <%
+                        }
+                        %>
                     </p>
                 </a>
-
-                <a href = "#" class = "list-group-item">
-                    <h4 class = "list-group-item-heading">
-                        Serie Generica<br>
-                        <p><small>by <strong>nombreArtistico</strong></small></p>
-                    </h4>
-                    <span class = "badge">5.2</span>
-                    <p class = "list-group-item-text">
-                        Tipo: <span class="label label-success">Serie</span>  Categoria: <span class="label label-primary">Drama</span>
-                    </p>
-                </a>
+                <%}%>
             </div>
+            <%} else {%>
+            <h3>No se encontraron resultados =(</h3>
+            <%}%>
         </div>
     </body>
 </html>

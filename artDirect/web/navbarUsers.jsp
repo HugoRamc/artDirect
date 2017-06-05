@@ -83,7 +83,7 @@
                 
             </ul>
                
-                <form class="navbar-form navbar-left" role="search">
+                <form class="navbar-form navbar-left" role="search" action="busqueda.jsp" >
                     <div class="input-group">
                         <input type="search" class="form-control" placeholder="Search" name="q">
                         <div class="input-group-btn">
