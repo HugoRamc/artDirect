@@ -43,7 +43,7 @@
         <%@include file="../navbarUsers.jsp" %>
         <div class="container">
             <div class="page-header">
-                <h2>Peliculas y Series</h2>
+                <h2>Sólo Peliculas</h2>
             </div>
             <div class = "list-group">
                 <%
