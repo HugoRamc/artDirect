@@ -9,6 +9,8 @@
             Conexion conecta = new Conexion();
             String nombre,correo,contra,tarjeta,cvv,mes,year;
             
+            String tipo[] = request.getParameterValues("tipo");
+            
             nombre = request.getParameter("txtNombre");
             correo = request.getParameter("txtEmail");
             contra = request.getParameter("txtPassword");
@@ -17,15 +19,24 @@
             mes = request.getParameter("txtmes");
             year = request.getParameter("txtyear");
             
-            ResultSet s = conecta.consulta("spRegistrarUsuario",correo,contra,nombre,nombre);
+            ResultSet s;
+            if(tipo[0].equals("1")){
+                //registrar al usuario como cineasta
+                
+                
+                
+            }else{//registrar al usuario como un usuario normal
+                s = conecta.consulta("spRegistrarUsuario",correo,contra,nombre,tarjeta,(year+"-"+mes+"-00"),cvv);
             
-            while(s.next()){
-                if(s.getString("resultado").equals("Usuario Registrado")){
-                    out.print("<script>alert('usuario registrado');</script>");
-                    response.sendRedirect("index.jsp");
-                }else{
-                     out.print("<script>alert('usuario registrado');</script>");
+                while(s.next()){
+                    if(s.getString("resultado").equals("Usuario Registrado")){
+                        out.print("<script>alert('usuario registrado');</script>");
+                        response.sendRedirect("index.jsp");
+                    }else{
+                         out.print("<script>alert('usuario registrado');</script>");
+                    }
                 }
+
             }
 
         }
@@ -45,6 +56,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="icon" href="images/logo1.png">
     <link rel="stylesheet" href="css/alta.css">
     <link rel="stylesheet" href="css/barra.css">
@@ -80,7 +92,7 @@
                     
                     <div class="form-group">
                         <label for="tarjeta" class="control-label">Tarjeta de credito</label>
-                        <input type="text" class="form-control" name="txtTarjeta" id="tarjeta" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required/>
+                        <input type="text" class="form-control" name="txtTarjeta" id="tarjeta" maxlength="16" placeholder="XXXX XXXX XXXX XXXX" required/>
                     </div>
                     <div class="form-group">
                         <div class="form-group row">
@@ -119,11 +131,16 @@
                             </div>
                         </div>
                     </div>
-                    <!--<div class="form-group">
+                    <div class="form-group">
                         <div class="checkbox">
-                            <label><input type="checkbox" name="tipo" value="1">¿Deseas registrarte como cineasta?</label>
+                            <label><input type="checkbox" id="btnCine"  name="tipo" value="1">¿Deseas registrarte como cineasta?</label>
                         </div>
-                    </div>-->
+                    </div>
+                                <div class="form-group" id="nomAr" style="display: none;">
+                                    Ingresa tu nombre artístico
+                                    <input type="text" class="form-control" >
+                                    
+                                </div>
                     
                     <div class="form-group ">
                         <input type="submit" class="btn btn-primary btn-lg btn-block login-button" value="Registrarse" name="submit" required>

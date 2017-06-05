@@ -28,7 +28,7 @@
                 <h4 class="modal-title" id="lineModalLabel">Iniciar Sesión</h4>
             </div>
             <div class="modal-body">
-                <form action="redirige.jsp" method="post">
+                <form action="/artDirect/redirige" method="post">
                     <div class="form-group">
                         <label for="login-email">Correo electrónico</label>
                         <input type="email" class="form-control" name="login-email">

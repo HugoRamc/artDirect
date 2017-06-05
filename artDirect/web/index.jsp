@@ -46,7 +46,7 @@
         </section>
     </section>
     <footer>
-        <section class="row2">
+        <!--<section class="row2">
             <h1>Nuestro Equipo:</h1>
             <div class="imagen">
                 <div class="centra">
@@ -59,7 +59,7 @@
                     <img src="images/hugo.jpg" class="img-circle img-responsive tamFoto"/><br>
                 </div>
                 Hugo Ramírez <br>
-                <!--<a href="https://www.twitter.com/Hugoramc" target="_blank">@Hugoramc</a>-->
+                <!--<a href="https://www.twitter.com/Hugoramc" target="_blank">@Hugoramc</a>
             </div>
             <div class="imagen">
                 <div class="centra">
@@ -73,8 +73,8 @@
                 </div>
                 Sebastian Saldaña
             </div>
-        </section>
-        <section class="row3">
+        </section>-->
+        <section class="row2">
             <div class="imagen">
                 <div class="centra">
                     <img src="images/carmen.jpg" class="img-circle img-responsive tamFoto"/><br>
@@ -86,13 +86,19 @@
                     <img src="images/ian.jpg" class="img-circle img-responsive tamFoto"/><br>
                 </div>
                 Ian Mendoza <br>
-                <a href="https://www.twitter.com/Hugoramc" target="_blank"></a>
             </div>
             <div class="imagen">
                 <div class="centra">
                     <img src="images/tona.jpg" class="img-circle img-responsive tamFoto"/><br>
                 </div>
                 Tonatihu Barrera
+            </div>
+             <div class="imagen">
+                <div class="centra">
+                    <img src="images/hugo.jpg" class="img-circle img-responsive tamFoto"/><br>
+                </div>
+                Hugo Ramírez <br>
+                <!--<a href="https://www.twitter.com/Hugoramc" target="_blank">@Hugoramc</a>-->
             </div>
         </section>
     </footer>

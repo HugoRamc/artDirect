@@ -3,9 +3,9 @@
 <%@page session="true"%>
 <%// Esto debe de ser remplazado por una variable de sesion
     //verificar las variables de sesion
-    String tipo = "hola";
+    //String tipo = "hola";
         //Object tipo;
-        Object tip = request.getParameter("tipoUsuario");
+        Object tipo = request.getSession().getAttribute("tipoUsuario");
         //out.print(tip);
         //tipo = request.getParameter("tipoUsuario");
         if((tipo!=null)){
@@ -47,16 +47,14 @@
                 <li>
                     <a href="perfil.jsp">Perfil</a>
                 </li>
-                <li>
-                    <a href="#">Contenido</a>
-                </li>
+                
                 
                 <%//si el usuario es cineasta
                     if(tipo!=null)
                     if(tipo.toString().equals("cineasta")){
                     %>
                 <li>
-                    <a href="#">Mis Obras</a>
+                    <a href="#">Contenido</a>
                 </li>
                 <%
                     }
@@ -91,7 +89,7 @@
                         </div>
                     </div>
                 </form>
-                <form action="../redirige.jsp" method="post" class="navbar-form navbar-right">
+                <form action="/artDirect/redirige" method="post" class="navbar-form navbar-right">
                     <button type="submit" class="btn btn-default" aria-label="">
                         Salir
                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>

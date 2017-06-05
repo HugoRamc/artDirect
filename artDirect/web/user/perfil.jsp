@@ -4,7 +4,7 @@
 <%@page session="true"%>
 <%
     //validacion de las sesiones
-    try
+    /*try
     {
         Object dat = request.getSession().getAttribute("correoUsu");
         Object tipo = request.getSession().getAttribute("tipoUsuario");
@@ -20,7 +20,7 @@
              while(s.next()){
                 nombre = s.getString("nombre");
                 contra = s.getString("pass");
-                tarjeta = s.getString("");
+                tarjeta = s.getString("");*/
              
               
          %>
@@ -124,11 +124,11 @@
         </div>
     </div>
        <%
-           }
+           /*}
            }
     }catch(Exception ex){
         response.sendRedirect("../index.jsp");
-    }
+    }*/
     %>
        
        
