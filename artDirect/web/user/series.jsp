@@ -49,7 +49,7 @@
                 <%
                 for (Pelicula miSerie : series) {
                 %>
-                <a href = "#" class = "list-group-item">
+                <a href ="/artDirect/Ver?q=<%=miSerie.getId()%>" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
                         <%=miSerie.getTitulo()%><br>
                         <p><small>by <strong><%=miSerie.getAutor()%></strong></small></p>

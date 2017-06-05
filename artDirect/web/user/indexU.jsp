@@ -74,7 +74,7 @@ inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
                 <%
                 for (Pelicula peli : peliculas) {
                 %>
-                <a href = "#" class = "list-group-item">
+                <a href ="/artDirect/Ver?q=<%=peli.getId()%>" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
                         <%=peli.getTitulo()%><br>
                         <p><small>by <strong><%=peli.getAutor()%></strong></small></p>
