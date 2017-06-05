@@ -15,12 +15,14 @@ import java.util.ArrayList;
  */
 public class Pelicula {
 
-    public String titulo;
-    public String tipo;
-    public ArrayList<String> categorias;
-    public String autor;
-    public double calificacion;
-    int id;
+    private String titulo;
+    private String tipo;
+    private ArrayList<String> categorias;
+    private String autor;
+    private double calificacion;
+    private int id;
+    private boolean esFavorito;
+    private int puntuacionUsuario;
     public Pelicula (){
         this.categorias = new ArrayList<>();
     }
@@ -56,17 +58,12 @@ public class Pelicula {
     public void setCategorias() throws Exception {
         Conexion con = new Conexion();
         ResultSet rs = con.consulta("spGetCategorias",this.id);
-        /*select c.categoria 
-    from tblcategorias t 
-    inner join ctgcategoriafilme c 
-    on c.idCatFilme=t.idCatFilme
-    and t.idFilme =idpeli;*/
 
         while (rs.next()) {
             String categoria = rs.getString("categoria");
-            System.out.println(categoria);
             this.categorias.add(categoria);
         }
+        con.cerrar();
     }
 
     public String getAutor() {
@@ -75,6 +72,16 @@ public class Pelicula {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+    
+    public void setAutor() throws Exception {
+        Conexion con = new Conexion();
+        ResultSet rs = con.consulta("spGetAutor", this.id);
+        if (rs.next()) {
+            String nombre = rs.getString("nombreArtistico");
+            this.autor= nombre;
+        }
+        con.cerrar();
     }
 
     public double getCalificacion() {
@@ -91,6 +98,29 @@ public class Pelicula {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean getEsFavorito() {
+        return esFavorito;
+    }
+
+    public void setEsFavorito(boolean esFavorito) {
+        this.esFavorito = esFavorito;
+    }
+
+    public int getPuntuacionUsuario() {
+        return puntuacionUsuario;
+    }
+
+    public void setPuntuacionUsuario(String idUsuario) throws Exception {
+        Conexion con = new Conexion();
+        ResultSet rs = con.consulta("spGetUserScore", this.id, idUsuario);
+        if (rs.next()) {
+            int puntuacion = rs.getInt("puntuacion");
+            this.puntuacionUsuario = puntuacion;
+        }
+        con.cerrar();
+        
     }
     
 }

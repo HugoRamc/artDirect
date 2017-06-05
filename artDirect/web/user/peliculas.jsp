@@ -22,7 +22,7 @@
         pel.setId(rs.getInt("idFilme"));
         pel.setTitulo(rs.getString("titulo"));
         pel.setCalificacion(rs.getDouble("puntuacion"));
-        //pel.setAutor(rs.getString("nombreArtistico"));
+        pel.setAutor();
         pel.setTipo(rs.getInt("tipo"));
         pel.setCategorias();
         peliculas.add(pel);
@@ -44,20 +44,20 @@
         <%@include file="../navbarUsers.jsp" %>
         <div class="container">
             <div class="page-header">
-                <h2>Peliculas y Series</h2>
+                <h2>Sólo Peliculas</h2>
             </div>
             <div class = "list-group">
                 <%
                 for (Pelicula peli : peliculas) {
                 %>
-                <a href = "#" class = "list-group-item">
+                <a href ="/artDirect/Ver?q=<%=peli.getId()%>" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
-                        <%=peli.titulo%><br>
-                        <p><small>by <strong><%=peli.autor%></strong></small></p>
+                        <%=peli.getTitulo()%><br>
+                        <p><small>by <strong><%=peli.getAutor()%></strong></small></p>
                     </h4>
-                    <span class = "badge"><%=peli.calificacion%></span>
+                    <span class = "badge"><%=peli.getCalificacion()%></span>
                     <p class = "list-group-item-text">
-                        Tipo: <span class="label label-info"><%=peli.tipo%></span>
+                        Tipo: <span class="label label-info"><%=peli.getTipo()%></span>
                         Categoria:
                         <%for (String categoria: peli.getCategorias()) {
                             System.out.println(categoria);

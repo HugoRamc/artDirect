@@ -83,7 +83,7 @@
                 
             </ul>
                
-                <form class="navbar-form navbar-left" role="search">
+                <form class="navbar-form navbar-left" role="search" action="busqueda.jsp" >
                     <div class="input-group">
                         <input type="search" class="form-control" placeholder="Search" name="q">
                         <div class="input-group-btn">
@@ -91,19 +91,13 @@
                         </div>
                     </div>
                 </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <form action="../redirige.jsp" method="post">
-                            <button type="submit" class="close" aria-label="">
-                                Salir
-                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-                            </button>
-                            <input type="hidden" name="salir" value="1"/>
-                        </form>
-                </li>
-                    
-                </ul>
-                
+                <form action="../redirige.jsp" method="post" class="navbar-form navbar-right">
+                    <button type="submit" class="btn btn-default" aria-label="">
+                        Salir
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                    </button>
+                    <input type="hidden" name="salir" value="1"/>
+                </form>             
                 <%
                 }
                 %>
@@ -112,8 +106,4 @@
     </div>   
 </nav>
                 <style>
-                    form > button{
-                        color:white !important;
-                        opacity:0.6 !important;
-                    }
                 </style>
