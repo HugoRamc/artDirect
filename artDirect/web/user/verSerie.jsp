@@ -1,3 +1,6 @@
+<%@page import="logica.Serie"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="db.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="org.apache.jasper.JasperException"%>
 <%-- 
     Document   : verSerie en esta vista se mostrara la serie y su informacion ademas de que
@@ -5,7 +8,35 @@
     Created on : 29/05/2017, 10:59:01 PM
     Author     : tona
 --%>
-
+<%
+System.out.println("El id aqui es: " + session.getAttribute("idContenido"));
+int idSerie = (Integer)session.getAttribute("idContenido");
+String email = "mail5@gmail.com"; // eseto se deberia de obtener de las variables de sesión
+Conexion con = new Conexion();
+ResultSet rs = con.consulta("spGetPelicula", idSerie);
+Serie serie = new Serie();
+while (rs.next()) {
+        serie.setId(rs.getInt("idFilme"));
+        serie.setTitulo(rs.getString("titulo"));
+        serie.setCalificacion(rs.getDouble("puntuacion"));
+        serie.setAutor();
+        serie.setTipo(rs.getInt("tipo"));
+        serie.setCategorias();
+        //serie.setEpisodios();
+        serie.setPuntuacionUsuario(email);
+}
+rs = con.consulta("spCheckFavorite", idSerie, email);
+if (rs.next()) {
+    if (rs.getInt("favorito")!=0) {
+        System.out.println("Favorito");
+        serie.setEsFavorito(true);
+    } else {
+        System.out.println("NO favorito");
+        serie.setEsFavorito(false);
+    }
+}
+con.cerrar();
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,15 +52,16 @@
         <%@include file="../navbarUsers.jsp" %>
         <div class="container">
             <div class="page-header">
+                 <input type="text" value="<%=serie.getId()%>" id="serie-id" hidden>
                 <h2>
-                Nombre de la Serie
-                <p><small>by <strong>Señor elegante</strong></small></p>
+                <%=serie.getTitulo()%>
+                <p><small>by <strong><%=serie.getAutor()%></strong></small></p>
                 </h2>
             </div>
             <div class="row">
                 <div class="col-md-8">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <video class="embed-responsive-item" controls="true">
+                        <video class="embed-responsive-item" controls="true" id="reproductor">
                             <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
                         </video>
                     </div>
@@ -50,24 +82,76 @@
             </div>
             <div class="row">
                 <div class="col-md-4">
-                    <h3>Calificación: <span class="label label-default">7.8</span></h3>
+                    <h3>Calificación: <span class="label label-default" id="puntaje"><%=serie.getCalificacion()%></span></h3>
                 </div>
                 <div class="col-md-4">
                     <h3>
                         <!--Cambiar por favorito y darle color rojo alv con btn-danger-->
-                        <button type="button" class="btn btn-default">
-                            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Agregar a Favoritos
-                        </button>
+                        <% if (serie.getEsFavorito()) { %>
+                        <input type="button" class="btn btn-danger" id="btn-fav" value="Quitar de Favoritos">
+                        <% } else {%>
+                        <input type="button" class="btn btn-default" id="btn-fav" value="Agregar a Favoritos">
+                        <%}%>
                     </h3>
                 </div>
 
                 <div class="col-md-4">
                     <h3 class="form-inline">
-                        <input type="number" class="form-control" name="puntuacion" id="puntuacion" min-value="0" max-value="10"/>
-                        <input type="button" class="btn btn-primary" value="Puntuar" required>
+                        <input type="number" class="form-control" name="puntuacion" id="puntuacion" min-value="0" max-value="10" value="<%=serie.getPuntuacionUsuario()%>"/>
+                        <input type="button" class="btn btn-primary" value="Puntuar" id="btn-calificar" required>
                     </h3>
                 </div>
             </div>
         </div>
+                <script>
+      $("#btn-fav").on('click', function (e) {
+          e.preventDefault();
+          console.log("Hola");
+          
+          $.ajax({
+              url: "/artDirect/Favorito",
+              type: "POST",
+              data: {"film": $('#serie-id').val()},
+              success: function (json) {
+                  console.log("Es favorito: " + json.favorito);
+                  if (json.favorito){
+                      $("#btn-fav").val("Quitar de Favoritos");
+                      $("#btn-fav").addClass("btn-danger");
+                        $("#btn-fav").removeClass("btn-default");
+                  }else{
+                      $("#btn-fav").val("Agregar a Favoritos");
+                      $("#btn-fav").addClass("btn-default");
+                    $("#btn-fav").removeClass("btn-danger");
+                  }
+              },
+              error: function (xhr, errmsg, err) {
+                  console.log("ERROR: " + err);
+                  console.log("ERROR MESSAGE: " + errmsg);
+                  console.log(xhr.status + ': ' + xhr.responseText)
+              }
+          });
+      });
+      $("#btn-calificar").on('click', function (e) {
+          e.preventDefault();
+          $.ajax({
+              url: "/artDirect/Calificar",
+              type: "POST",
+              data: {
+                  "film": $('#serie-id').val(),
+                  "calificacion": $('#puntuacion').val().split(".")[0]
+              },
+              success: function (json) {
+                  console.log("It works?: " + json.ok);
+                  $('#puntaje').text(json.puntuacion);
+                  $('#puntuacion').val(json.puntuacionUsuario);
+              },
+              error: function (xhr, errmsg, err) {
+                  console.log("ERROR: " + err);
+                  console.log("ERROR MESSAGE: " + errmsg);
+                  console.log(xhr.status + ': ' + xhr.responseText)
+              }
+          });
+      });
+  </script>
     </body>
 </html>
