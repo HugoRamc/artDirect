@@ -1,5 +1,42 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="db.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8" import="org.apache.jasper.JasperException"%>
 <!DOCTYPE html>
+<%
+   try{
+        Object val = request.getParameter("submit");
+        if(val!=null){
+            Conexion conecta = new Conexion();
+            String nombre,correo,contra,tarjeta,cvv,mes,year;
+            
+            nombre = request.getParameter("txtNombre");
+            correo = request.getParameter("txtEmail");
+            contra = request.getParameter("txtPassword");
+            tarjeta = request.getParameter("txtTarjeta");
+            cvv = request.getParameter("txtcvv");
+            mes = request.getParameter("txtmes");
+            year = request.getParameter("txtyear");
+            
+            ResultSet s = conecta.consulta("spRegistrarUsuario",correo,contra,nombre,nombre);
+            
+            while(s.next()){
+                if(s.getString("resultado").equals("Usuario Registrado")){
+                    out.print("<script>alert('usuario registrado');</script>");
+                    response.sendRedirect("index.jsp");
+                }else{
+                     out.print("<script>alert('usuario registrado');</script>");
+                }
+            }
+
+        }
+        
+   }catch(Exception ez){
+       out.print(ez.toString());
+   }
+
+
+%>
+
 <html> 
 <head> 
     <title>Alta del Cinefilo</title> 
@@ -25,35 +62,35 @@
             </div> 
             <div class="main-login main-center">
                <!--Dar de alta al usuario-->
-                <form class="form-horizontal" method="post" action="#">
+                <form class="form-horizontal" method="post" action="alta.jsp">
                     <div class="form-group">
                         <label for="name" class="control-label">Nombre</label>
-                        <input type="text" class="form-control" name="name" id="name"  placeholder="Nombre y Apellidos" required/>
+                        <input type="text" class="form-control" name="txtNombre" id="name"  placeholder="Nombre y Apellidos" required/>
                     </div>
 
                     <div class="form-group">
                         <label for="email" class="control-label">Correo Electronico</label>
-                        <input type="text" class="form-control" name="email" id="email"  placeholder="Ingresa un email valido" required/>
+                        <input type="text" class="form-control" name="txtEmail" id="email"  placeholder="Ingresa un email valido" required/>
                     </div>
                     
                     <div class="form-group">
                         <label for="password" class="control-label">Contraseña</label>
-                        <input type="password" class="form-control" name="password" id="password"  placeholder="Constraseña" required/>
+                        <input type="password" class="form-control" name="txtPassword" id="password"  placeholder="Constraseña" required/>
                     </div>
                     
                     <div class="form-group">
                         <label for="tarjeta" class="control-label">Tarjeta de credito</label>
-                        <input type="text" class="form-control" name="tarjeta" id="tarjeta" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required/>
+                        <input type="text" class="form-control" name="txtTarjeta" id="tarjeta" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required/>
                     </div>
                     <div class="form-group">
                         <div class="form-group row">
                             <label for="cvv" class="col-md-1 control-label">CVV</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" name="cvv" id="cvv"  placeholder="CVV" required/>
+                                <input type="text" class="form-control" name="txtcvv" id="cvv"  placeholder="CVV" required/>
                             </div>
                             <label for="mes" class="col-md-1 control-label">Mes</label>
                             <div class="col-md-3">
-                                <select class="form-control" name="mes" id="mes" required>
+                                <select class="form-control" name="txtmes" id="mes" required>
                                     <option value="01">01</option>
                                     <option value="02">02</option>
                                     <option value="03">03</option>
@@ -70,7 +107,7 @@
                             </div>
                             <label for="year" class="col-md-1 control-label">Año</label>
                             <div class="col-md-3">
-                                <select class="form-control" name="year" id="year" required>
+                                <select class="form-control" name="txtyear" id="year" required>
                                     <%
                                     for (int i=17; i<36; i++){
                                     %>
@@ -82,14 +119,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <div class="checkbox">
                             <label><input type="checkbox" name="tipo" value="1">¿Deseas registrarte como cineasta?</label>
                         </div>
-                    </div>
+                    </div>-->
                     
                     <div class="form-group ">
-                        <input type="submit" class="btn btn-primary btn-lg btn-block login-button" value="Registrarse" required>
+                        <input type="submit" class="btn btn-primary btn-lg btn-block login-button" value="Registrarse" name="submit" required>
                     </div>
                 </form>
             </div>

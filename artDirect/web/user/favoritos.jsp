@@ -45,6 +45,7 @@ inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/barra.css">
+        <link rel="icon" href="../images/logo1.png">
     </head>
     <body>
         <%@include file="../navbarUsers.jsp" %>
