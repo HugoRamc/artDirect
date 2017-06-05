@@ -21,6 +21,7 @@ while (rs.next()) {
         pelicula.setAutor();
         pelicula.setTipo(rs.getInt("tipo"));
         pelicula.setCategorias();
+        pelicula.setPuntuacionUsuario(email);
     }
 rs = con.consulta("spCheckFavorite", idPelicula, email);
 if (rs.next()) {
@@ -38,7 +39,7 @@ if (rs.next()) {
     
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title><%=pelicula.getTitulo()%></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -73,7 +74,7 @@ if (rs.next()) {
                     <%}%>
                     <p>
                     <div class="form-inline">
-                        <input type="number" class="form-control" name="puntuacion" id="puntuacion" min-value="0" max-value="10" required/>
+                        <input type="number" class="form-control" name="puntuacion" id="puntuacion" min-value="0" max-value="10" required value="<%=pelicula.getPuntuacionUsuario()%>"/>
                         <input type="button" class="btn btn-primary" value="Puntuar" id="btn-calificar">
                     </div>
                     </p>

@@ -22,6 +22,7 @@ public class Pelicula {
     private double calificacion;
     private int id;
     private boolean esFavorito;
+    private int puntuacionUsuario;
     public Pelicula (){
         this.categorias = new ArrayList<>();
     }
@@ -57,11 +58,6 @@ public class Pelicula {
     public void setCategorias() throws Exception {
         Conexion con = new Conexion();
         ResultSet rs = con.consulta("spGetCategorias",this.id);
-        /*select c.categoria 
-    from tblcategorias t 
-    inner join ctgcategoriafilme c 
-    on c.idCatFilme=t.idCatFilme
-    and t.idFilme =idpeli;*/
 
         while (rs.next()) {
             String categoria = rs.getString("categoria");
@@ -85,6 +81,7 @@ public class Pelicula {
             String nombre = rs.getString("nombreArtistico");
             this.autor= nombre;
         }
+        con.cerrar();
     }
 
     public double getCalificacion() {
@@ -109,6 +106,21 @@ public class Pelicula {
 
     public void setEsFavorito(boolean esFavorito) {
         this.esFavorito = esFavorito;
+    }
+
+    public int getPuntuacionUsuario() {
+        return puntuacionUsuario;
+    }
+
+    public void setPuntuacionUsuario(String idUsuario) throws Exception {
+        Conexion con = new Conexion();
+        ResultSet rs = con.consulta("spGetUserScore", this.id, idUsuario);
+        if (rs.next()) {
+            int puntuacion = rs.getInt("puntuacion");
+            this.puntuacionUsuario = puntuacion;
+        }
+        con.cerrar();
+        
     }
     
 }
