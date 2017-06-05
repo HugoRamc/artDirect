@@ -15,13 +15,13 @@ import java.util.ArrayList;
  */
 public class Pelicula {
 
-    public String titulo;
-    public String tipo;
-    public ArrayList<String> categorias;
-    public String autor;
-    public double calificacion;
-    int id;
-    boolean esFavorito;
+    private String titulo;
+    private String tipo;
+    private ArrayList<String> categorias;
+    private String autor;
+    private double calificacion;
+    private int id;
+    private boolean esFavorito;
     public Pelicula (){
         this.categorias = new ArrayList<>();
     }
@@ -67,6 +67,7 @@ public class Pelicula {
             String categoria = rs.getString("categoria");
             this.categorias.add(categoria);
         }
+        con.cerrar();
     }
 
     public String getAutor() {
@@ -75,6 +76,15 @@ public class Pelicula {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+    
+    public void setAutor() throws Exception {
+        Conexion con = new Conexion();
+        ResultSet rs = con.consulta("spGetAutor", this.id);
+        if (rs.next()) {
+            String nombre = rs.getString("nombreArtistico");
+            this.autor= nombre;
+        }
     }
 
     public double getCalificacion() {

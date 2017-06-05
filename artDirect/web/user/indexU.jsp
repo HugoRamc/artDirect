@@ -47,7 +47,7 @@ inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
         pel.setId(rs.getInt("idFilme"));
         pel.setTitulo(rs.getString("titulo"));
         pel.setCalificacion(rs.getDouble("puntuacion"));
-        //pel.setAutor(rs.getString("nombreArtistico"));
+        pel.setAutor();
         pel.setTipo(rs.getInt("tipo"));
         pel.setCategorias();
         peliculas.add(pel);
@@ -76,15 +76,15 @@ inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
                 %>
                 <a href = "#" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
-                        <%=peli.titulo%><br>
-                        <p><small>by <strong><%=peli.autor%></strong></small></p>
+                        <%=peli.getTitulo()%><br>
+                        <p><small>by <strong><%=peli.getAutor()%></strong></small></p>
                     </h4>
-                    <span class = "badge"><%=peli.calificacion%></span>
+                    <span class = "badge"><%=peli.getCalificacion()%></span>
                     <p class = "list-group-item-text">
-                        <% if (peli.tipo.equals("Pelicula")) {%>
-                        Tipo: <span class="label label-info"><%=peli.tipo%></span>
+                        <% if (peli.getTipo().equals("Pelicula")) {%>
+                        Tipo: <span class="label label-info"><%=peli.getTipo()%></span>
                         <% }else { %>
-                        Tipo: <span class="label label-success"><%=peli.tipo%></span>
+                        Tipo: <span class="label label-success"><%=peli.getTipo()%></span>
                         <%
                         }
                         %>

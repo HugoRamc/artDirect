@@ -18,7 +18,7 @@ while (rs.next()) {
         pelicula.setId(rs.getInt("idFilme"));
         pelicula.setTitulo(rs.getString("titulo"));
         pelicula.setCalificacion(rs.getDouble("puntuacion"));
-        //pelicula.setAutor(rs.getString("nombreArtistico"));
+        pelicula.setAutor();
         pelicula.setTipo(rs.getInt("tipo"));
         pelicula.setCategorias();
     }
@@ -52,7 +52,7 @@ if (rs.next()) {
                 <input type="text" value="<%=pelicula.getId()%>" id="peli-id" hidden>
                 <h2>
                     <%=pelicula.getTitulo()%>
-                    <p><small>by <strong>Nana</strong></small></p>
+                    <p><small>by <strong><%=pelicula.getAutor()%></strong></small></p>
                 </h2>
             </div>
             <div class="row">

@@ -51,12 +51,12 @@
                 %>
                 <a href = "#" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
-                        <%=miSerie.titulo%><br>
-                        <p><small>by <strong><%=miSerie.autor%></strong></small></p>
+                        <%=miSerie.getTitulo()%><br>
+                        <p><small>by <strong><%=miSerie.getAutor()%></strong></small></p>
                     </h4>
-                    <span class = "badge"><%=miSerie.calificacion%></span>
+                    <span class = "badge"><%=miSerie.getCalificacion()%></span>
                     <p class = "list-group-item-text">
-                        Tipo: <span class="label label-success"><%=miSerie.tipo%></span>
+                        Tipo: <span class="label label-success"><%=miSerie.getTipo()%></span>
                         Categoria:
                         <%for (String categoria: miSerie.getCategorias()) {
                             System.out.println(categoria);
