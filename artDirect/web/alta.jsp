@@ -22,14 +22,29 @@
             year = request.getParameter("txtyear");
             
             ResultSet s;
-            if(tipo != null && tipo[0].equals("1")){
+            if(tipo!=null){
                 //registrar al usuario como cineasta
+                String artistico = request.getParameter("txtArtist");
+                if(artistico!=""){
+                    s = conecta.consulta("spRegistrarCineasta",correo,artistico,contra,nombre,tarjeta,(year+"-"+mes+"-01"),cvv);
+                 while(s.next()){
+                    if(s.getString("resultado").equals("cineasta registrado")){
+                        out.print("<script>alert('cineasta registrado');</script>");
+                        response.sendRedirect("index.jsp");
+                    }else{
+                         out.print("<script>alert('"+s.getString("resultado")+"');</script>");
+                    }
+                }
+                    
+                }else{
+                    out.print("<script>alert('Ingresa un nombre artístico');</script>");
+                }
                 
                 
                 
             }else{//registrar al usuario como un usuario normal
-                s = conecta.consulta("spRegistrarUsuario",correo,contra,nombre,tarjeta,(year+"-"+mes+"-00"),cvv);
-                
+                s = conecta.consulta("spRegistrarUsuario",correo,contra,nombre,tarjeta,(year+"-"+mes+"-01"),cvv);
+
                 while(s.next()){
                     if(s.getString("resultado").equals("Usuario Registrado")){
                         out.print("<script>alert('usuario registrado');</script>");
@@ -140,7 +155,7 @@
                     </div>
                                 <div class="form-group" id="nomAr" style="display: none;">
                                     Ingresa tu nombre artístico
-                                    <input type="text" class="form-control" >
+                                    <input type="text" class="form-control" name="txtArtist">
                                     
                                 </div>
                     

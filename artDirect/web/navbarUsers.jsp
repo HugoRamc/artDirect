@@ -6,10 +6,8 @@
     //String tipo = "hola";
         //Object tipo;
         Object tipo = request.getSession().getAttribute("tipoUsuario");
-        //out.print(tip);
+        //out.print(tipo);
         //tipo = request.getParameter("tipoUsuario");
-        if((tipo!=null)){
-            System.out.println(tipo.toString());
            //response.sendRedirect("../index.jsp");
 %>
 
@@ -93,9 +91,6 @@
                     </button>
                     <input type="hidden" name="salir" value="1"/>
                 </form>             
-                <%
-                }
-                %>
             
         </div>
     </div>   
