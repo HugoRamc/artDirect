@@ -32,3 +32,8 @@ ul > li{
     width: 7vw;
     padding-top: 0;
 }
+
+.btnAgregar{
+    float: right;
+    margin-top: 10%;
+}

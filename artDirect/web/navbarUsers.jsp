@@ -9,11 +9,8 @@
         //out.print(tip);
         //tipo = request.getParameter("tipoUsuario");
         if((tipo!=null)){
+            System.out.println(tipo.toString());
            //response.sendRedirect("../index.jsp");
-        
-        
-    
-
 %>
 
 
@@ -54,7 +51,7 @@
                     if(tipo.toString().equals("cineasta")){
                     %>
                 <li>
-                    <a href="#">Contenido</a>
+                    <a href="contenido.jsp">Mi contenido</a>
                 </li>
                 <%
                     }

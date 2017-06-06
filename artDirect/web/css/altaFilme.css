@@ -1,0 +1,45 @@
+.agregarFilme-contenedor{
+    margin-top: 5em;
+}
+
+.contenedor-filme{
+    box-shadow: 0 0 10px gray;
+    padding: 1.5em;
+}
+
+.desc{
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.centrado{
+    text-align: center;
+}
+
+.agregarNuevo{
+    width: 100%;
+}
+
+.oculto{
+    display: none;
+}
+
+.enlinea{
+    display: inline-block;
+}
+
+.titulo-agregar{
+    margin-bottom: 3em;
+    font-size: 1.3em
+}
+
+.opciones-artista{
+    padding: .5em 0;
+    text-align: right;
+}
+
+
+
+
+

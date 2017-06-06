@@ -11,6 +11,8 @@
             
             String tipo[] = request.getParameterValues("tipo");
             
+            out.print(tipo);
+            
             nombre = request.getParameter("txtNombre");
             correo = request.getParameter("txtEmail");
             contra = request.getParameter("txtPassword");
@@ -20,14 +22,14 @@
             year = request.getParameter("txtyear");
             
             ResultSet s;
-            if(tipo[0].equals("1")){
+            if(tipo != null && tipo[0].equals("1")){
                 //registrar al usuario como cineasta
                 
                 
                 
             }else{//registrar al usuario como un usuario normal
                 s = conecta.consulta("spRegistrarUsuario",correo,contra,nombre,tarjeta,(year+"-"+mes+"-00"),cvv);
-            
+                
                 while(s.next()){
                     if(s.getString("resultado").equals("Usuario Registrado")){
                         out.print("<script>alert('usuario registrado');</script>");
@@ -42,7 +44,7 @@
         }
         
    }catch(Exception ez){
-       out.print(ez.toString());
+       out.print("ERROR: " + ez.toString());
    }
 
 
