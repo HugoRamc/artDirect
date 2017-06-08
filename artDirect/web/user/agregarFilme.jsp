@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="db.Conexion"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
     try
@@ -52,10 +54,40 @@
                                 </div>
                             </div>
                             <div class="form-group puroCartelDeSantaALV">
-                                <input type="file" name="archivo" class="agregarNuevo" required>
+                                <label class="control-label">Archivo del filme</label>
+                                <input type="file" name="archivo" class="form-control agregarNuevo" required>
                             </div>
                             <div class="form-group">
-                                <input type="submit" name="agregarNuevo" value="Agregar" class="btn btn-default agregarNuevo">
+                                <label class="control-label hola">Categorías<span class="glyphicon glyphicon-plus-sign miraCategoria"></span>
+                                    <div class="categorias oculto">
+                                        <%
+                                            Conexion conectar = new Conexion();
+                                            ResultSet s = conectar.consulta("spGetAllCategorias");
+                                            
+                                            while(s.next()){
+                                                String cat = s.getString("categoria");
+                                                int idCat = s.getInt("idCatFilme");
+                                            
+                                        %>
+                                        <div class="categorias-elemento" onclick="agregarCategoria(this);"><input type="hidden" name="categoriasOculto" class="categoriaO" value="<%=idCat%>"><%=cat%></div>
+                                        <%
+                                            }
+                                        %>
+                                    </div>
+                                </label>
+                                <div class="categorias-contenedor form-control"></div>
+                                
+                            </div>
+                            <div class="form-group reparto">
+                                <label class="control-label">Reparto<span class="glyphicon glyphicon-plus-sign agregarActor"></span></label>
+                                <div class="persona-reparto">
+                                    <input type="text" name="persona" placeholder="Nombre" class="form-control persona-clase p1 enlinea" required>
+                                    <button class="btn btn-default p2" onclick="quitarActor(this);">Quitar</button>
+                                    <input type="text" name="papel" placeholder="Rol" class="form-control persona-clase2 p2 enlinea" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="agregarNuevo" value="Agregar" class="btn btn-success agregarNuevo conPadding" onclick="verificar(this);">
                             </div>
                         </form>
                     </div>

@@ -26,7 +26,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 
-@WebServlet(name = "agregarFilmeServlet", urlPatterns = {"/upload"})
+@WebServlet(name = "agregarFilmeServlet", urlPatterns = {"/"})
 @MultipartConfig
 
 public class agregarFilmeServlet extends HttpServlet {
@@ -41,11 +41,16 @@ public class agregarFilmeServlet extends HttpServlet {
             HttpSession sesion = request.getSession();
             
             String correo = (String)sesion.getAttribute("correoUsu");
-            final String path = request.getRealPath("/") + "videos";
+            final String path = request.getRealPath("/") + "videos"; //si lo se, esta depreciado pero me vale
             final Part part = request.getPart("archivo");
             final String nombreArchivo = quitarPuntos(correo) + getFileName(part);
+            
             String nombrePeli = request.getParameter("txtNombre");
             String desc = request.getParameter("desc");
+            String categorias[] = request.getParameterValues("catAgregada");
+            String nombreActores[] = request.getParameterValues("persona");
+            String papel[] = request.getParameterValues("papel");
+            
             
             Conexion conectar = new Conexion();
             ResultSet rs = conectar.consulta("spConsultaValidezRuta", nombreArchivo);
@@ -84,6 +89,20 @@ public class agregarFilmeServlet extends HttpServlet {
                 
                 //conectar.consulta("spInsertarPelicula", idF, path + File.separator + nombreArchivo);
                 conectar.consulta("spInsertarPelicula", idF, nombreArchivo);
+                
+                if(categorias != null){
+                    for(String categoria:categorias){
+                        int idC = Integer.parseInt(categoria);
+                        conectar.consulta("spInsertarCategoria", idF, idC);
+                    }
+                }
+                
+                if(nombreActores != null){
+                    for(int i = 0; i < nombreActores.length; i++){
+                        conectar.consulta("spInsertarReparto", idF, nombreActores[i], papel[i]);
+                    }
+                }
+                
                 conectar.cerrar();
                 sesion.setAttribute("exitoPelicula", "exito");
                 response.sendRedirect("user/contenido.jsp");

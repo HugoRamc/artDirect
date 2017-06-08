@@ -4,9 +4,17 @@
         <servlet-name>EliminarFilme</servlet-name>
         <servlet-class>servlet.EliminarFilme</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>agregarFilmeServlet</servlet-name>
+        <servlet-class>servlet.agregarFilmeServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EliminarFilme</servlet-name>
         <url-pattern>/EliminarFilme</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>agregarFilmeServlet</servlet-name>
+        <url-pattern>/agregarFilmeServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
