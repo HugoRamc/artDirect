@@ -5,6 +5,7 @@
 .contenedor-filme{
     box-shadow: 0 0 10px gray;
     padding: 1.5em;
+    margin-bottom: 3em;
 }
 
 .desc{
@@ -19,6 +20,7 @@
 
 .agregarNuevo{
     width: 100%;
+    padding: 0;
 }
 
 .oculto{
@@ -39,6 +41,78 @@
     text-align: right;
 }
 
+.persona-reparto{
+    margin: .5em 0;
+    text-align: center;
+}
+
+.p1{
+    float: left;
+}
+
+.p2{
+    float: right;
+}
+
+.persona-clase{
+    width: 45%;
+    margin-bottom: .5em;
+}
+
+.persona-clase2{
+    width: 35%;
+    margin-bottom: .5em;
+    margin-right: 5%;
+}
+
+.totalite{
+    width: 100%;
+}
+
+.agregarActor,
+.miraCategoria{
+    margin-left: 0.5em;
+    cursor: pointer;
+}
+
+.categorias-contenedor{
+    height: 60px;
+}
+
+.conPadding{
+    padding: .5em;
+    margin-top: 2em;
+}
+
+.hola{
+    position: relative;
+}
+
+.categorias{
+    position: absolute;
+    background-color: #ececec;
+    top: 0;
+    margin-left: 100px;
+    padding: .5em;
+    text-decoration: none;
+    font-weight: initial;
+    min-width: 100px;
+}
+
+.categorias-elemento:hover{
+    cursor: pointer;
+    background-color: #cbc8c8;
+    padding: .1em .5em;
+    border-radius: 10px;
+}
+
+.ePum{
+    margin-right: .6em;
+}
+
+label{
+    margin-top: .5em;
+}
 
 
 

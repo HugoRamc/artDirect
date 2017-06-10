@@ -20,12 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-@WebServlet(name = "agregarFilmeServlet", urlPatterns = {"/upload"})
+@WebServlet(name = "agregarEpisodioServlet", urlPatterns = {"/upload"})
 @MultipartConfig
 
 public class agregarEpisodioServlet extends HttpServlet {
     
-    private final static Logger LOGGER = Logger.getLogger(agregarFilmeServlet.class.getCanonicalName());
+    private final static Logger LOGGER = Logger.getLogger(agregarEpisodioServlet.class.getCanonicalName());
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
