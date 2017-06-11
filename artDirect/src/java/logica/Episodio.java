@@ -10,9 +10,12 @@ package logica;
  * @author tona
  */
 public class Episodio {
+
     private int idEpisodio;
     private String nombre;
     private String ruta;
+    private int numero;
+    private String descripcion;
 
     public int getIdEpisodio() {
         return idEpisodio;
@@ -37,6 +40,23 @@ public class Episodio {
     public void setRuta(String ruta) {
         this.ruta = ruta;
     }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
     
     
+
 }

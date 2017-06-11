@@ -30,6 +30,8 @@ public class Serie  extends Pelicula{
             Episodio episode = new Episodio();
             episode.setNombre(rs.getString("nombre"));
             episode.setRuta(rs.getString("path"));
+            episode.setNumero(rs.getInt("numero"));
+            episode.setDescripcion(rs.getString("descripcion"));
             episodios.add(episode);
         }
         con.cerrar();

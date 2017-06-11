@@ -74,7 +74,12 @@ con.cerrar();
                             <a class="list-group-item active">Lista de episodios</a>
                             <% for (Episodio episodio : serie.getEpisodios()) {
                             %>
-                            <a class="list-group-item" data-path="<%=episodio.getRuta()%>"><%=episodio.getNombre()%></a>
+                            <a class="list-group-item" data-path="<%=episodio.getRuta()%>">
+                                <h4 class = "list-group-item-heading"><%=episodio.getNumero()%>.- <%=episodio.getNombre()%></h4>
+                                <p class = "list-group-item-text">
+                                    <%=episodio.getDescripcion()%>
+                                </p>
+                            </a>
                             <%}%>
                         </div>
                     </div> 
