@@ -12,11 +12,14 @@
 --%>
 <%
 String parametro = request.getParameter("q");
+String tipo2 = (String)request.getSession().getAttribute("tipoUsuario");
 System.out.println("El parametro de busqueda es: " + parametro);
 ArrayList<Pelicula> peliculas = new ArrayList<Pelicula>();
+ArrayList<String> idUsuarios = new ArrayList<String>();
 Conexion con = new Conexion();
 ResultSet rs = con.consulta("spBuscar", parametro);
 while (rs.next()) {
+        idUsuarios.add(rs.getString("idUsuario"));
         Pelicula pel = new Pelicula();
         pel.setId(rs.getInt("idFilme"));
         pel.setTitulo(rs.getString("titulo"));
@@ -34,10 +37,11 @@ con.cerrar();
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Busqueda</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/barra.css">
+        <link rel="stylesheet" href="../css/altaFilme.css"/>
     </head>
     <body>
         <%@include file="../navbarUsers.jsp" %>
@@ -48,7 +52,11 @@ con.cerrar();
             <%if (peliculas.size() != 0) {%>
             <div class = "list-group">
                 <%
+                    int contador = 0;
                 for (Pelicula peli : peliculas) {
+                    String idUs = idUsuarios.get(contador);
+                    contador++;
+                    int id = peli.getId();
                 %>
                 <a href ="/artDirect/Ver?q=<%=peli.getId()%>" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
@@ -72,6 +80,19 @@ con.cerrar();
                         }
                         %>
                     </p>
+                    <%
+                        if(tipo2.equals("administrador")){
+                    %>
+                    <div class="opciones-artista">
+                        <form action="/artDirect/EliminarFilme" style="display: inline-block">
+                            <input type="hidden" name="idSerie" value="<%=id%>">
+                            <input type="hidden" name="idUs" value="<%=idUs%>">
+                            <button name="eliminarFilme" class="btn btn-default btnBorrar">Eliminar</button>
+                        </form>
+                    </div>
+                    <%
+                        }
+                    %>
                 </a>
                 <%}%>
             </div>

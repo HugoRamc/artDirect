@@ -10,11 +10,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="../js/agregarFilme.js"></script>
         <link rel="stylesheet" href="../css/barra.css">
+        <link rel="stylesheet" href="../css/admin.css"/>
     </head>
     <body>
         <%@include file="../navbarUsers.jsp" %>
         <div class="container">
-            
+            <h2 class="mensajeAdmin">Bienvenido(a), seleccione alguna opción del menú para comenzar.</h2>
         </div>
     </body>
 </html>

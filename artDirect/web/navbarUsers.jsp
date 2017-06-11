@@ -25,7 +25,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
                 <%
-                    
+                    if(!tipo.equals("administrador")){
                 %>
                 <li>
                     <a href="indexU.jsp">Inicio</a>
@@ -47,28 +47,24 @@
                 <%//si el usuario es cineasta
                     if(tipo!=null)
                     if(tipo.toString().equals("cineasta")){
-                    %>
+                %>
                 <li>
                     <a href="contenido.jsp">Mi contenido</a>
                 </li>
+                   
                 <%
+                        }
                     }
-                    if(tipo!=null)
-                    if(tipo.toString().equals("estandar")){
-                    //imprimir parte del usuario estándar
+                    else{
                     %>
-                <!--<li>
-                    <a href="#">Mis Obras</a>
-                </li>-->
-                <%
-                    }
-                    if(tipo!=null)
-                    if(tipo.toString().equals("premium")){
-                    //imprimir la opcion del usuario premium
-                    %>
-                <!--<li>
-                    <a href="#">Mis Obras</a>
-                </li>-->
+                    
+                    <li>
+                        <a href="pendientesAdmin.jsp">Solicitudes</a>
+                    </li>
+                    <li>
+                        <a href="filmesAdmin.jsp">Filmes</a>
+                    </li>
+                    
                 <%
                     }
                 %>
