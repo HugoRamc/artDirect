@@ -1,3 +1,4 @@
+<%@page import="logica.Episodio"%>
 <%@page import="logica.Serie"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="db.Conexion"%>
@@ -23,7 +24,7 @@ while (rs.next()) {
         serie.setAutor();
         serie.setTipo(rs.getInt("tipo"));
         serie.setCategorias();
-        //serie.setEpisodios();
+        serie.setEpisodios();
         serie.setPuntuacionUsuario(email);
 }
 rs = con.consulta("spCheckFavorite", idSerie, email);
@@ -71,12 +72,10 @@ con.cerrar();
                     <div class="col-md-12">
                         <div class="list-group">
                             <a class="list-group-item active">Lista de episodios</a>
-                            <a class="list-group-item">Episodio 1</a>
-                            <a class="list-group-item">Episodio 2</a>
-                            <a class="list-group-item">Episodio 3</a>
-                            <a class="list-group-item">Episodio 4</a>
-                            <a class="list-group-item">Episodio 5</a>
-                            <a class="list-group-item">Episodio 6</a>
+                            <% for (Episodio episodio : serie.getEpisodios()) {
+                            %>
+                            <a class="list-group-item" data-path="<%=episodio.getRuta()%>"><%=episodio.getNombre()%></a>
+                            <%}%>
                         </div>
                     </div> 
                 </div>

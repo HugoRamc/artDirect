@@ -28,6 +28,7 @@
         pel.setCategorias();
         peliculas.add(pel);
     }
+    con.cerrar();
 %>
 <!DOCTYPE html>
 <html>

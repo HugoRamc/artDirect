@@ -27,6 +27,7 @@
         serie.setCategorias();
         series.add(serie);
     }
+    con.cerrar();
 %>
 <!DOCTYPE html>
 <html>
