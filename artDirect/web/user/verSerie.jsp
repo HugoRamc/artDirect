@@ -64,7 +64,10 @@ con.cerrar();
                 <div class="col-md-8">
                     <div class="embed-responsive embed-responsive-16by9">
                         <video class="embed-responsive-item" controls="true" id="reproductor">
-                            <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
+                            <source src="../videos/<%=serie.getEpisodios().get(0).getRuta()%>" type="video/mp4">
+                            <source src="../videos/<%=serie.getEpisodios().get(0).getRuta()%>" type="video/ogg">
+                            <source src="../videos/<%=serie.getEpisodios().get(0).getRuta()%>" type="video/flv">
+                            <source src="../videos/<%=serie.getEpisodios().get(0).getRuta()%>" type="video/3gp">
                         </video>
                     </div>
                 </div>
@@ -72,15 +75,20 @@ con.cerrar();
                     <div class="col-md-12">
                         <div class="list-group">
                             <a class="list-group-item active">Lista de episodios</a>
-                            <% for (Episodio episodio : serie.getEpisodios()) {
+                            <% int contador = 0;
+                                String primerElemento="list-group-item-success";
+                                for (Episodio episodio : serie.getEpisodios()) {
+                                    if (contador != 0)
+                                        primerElemento = "";
                             %>
-                            <a class="list-group-item" data-path="<%=episodio.getRuta()%>">
+                            <a class="list-group-item episodio <%=primerElemento%>" data-path="<%=episodio.getRuta()%>">
                                 <h4 class = "list-group-item-heading"><%=episodio.getNumero()%>.- <%=episodio.getNombre()%></h4>
                                 <p class = "list-group-item-text">
                                     <%=episodio.getDescripcion()%>
                                 </p>
                             </a>
-                            <%}%>
+                            <% contador++;
+                            }%>
                         </div>
                     </div> 
                 </div>
@@ -102,8 +110,10 @@ con.cerrar();
 
                 <div class="col-md-4">
                     <h3 class="form-inline">
-                        <input type="number" class="form-control" name="puntuacion" id="puntuacion" min-value="0" max-value="10" value="<%=serie.getPuntuacionUsuario()%>"/>
-                        <input type="button" class="btn btn-primary" value="Puntuar" id="btn-calificar" required>
+                        <form id="form-calificar">
+                        <input type="number" class="form-control" name="puntuacion" id="puntuacion" min="0" max="10" value="<%=serie.getPuntuacionUsuario()%>" required/>
+                        <input type="submit" class="btn btn-primary" value="Puntuar" id="btn-calificar">
+                        </form>
                     </h3>
                 </div>
             </div>
@@ -132,18 +142,21 @@ con.cerrar();
               error: function (xhr, errmsg, err) {
                   console.log("ERROR: " + err);
                   console.log("ERROR MESSAGE: " + errmsg);
-                  console.log(xhr.status + ': ' + xhr.responseText)
+                  console.log(xhr.status + ': ' + xhr.responseText);
               }
           });
       });
       $("#btn-calificar").on('click', function (e) {
           e.preventDefault();
-          $.ajax({
+          if (parseInt($('#puntuacion').val()) >10 || parseInt($('#puntuacion').val())<0){
+              alert("No es una calificación valida [0-10]")
+          } else{
+              $.ajax({
               url: "/artDirect/Calificar",
               type: "POST",
               data: {
                   "film": $('#serie-id').val(),
-                  "calificacion": $('#puntuacion').val().split(".")[0]
+                  "calificacion": parseInt($('#puntuacion').val())
               },
               success: function (json) {
                   console.log("It works?: " + json.ok);
@@ -156,6 +169,18 @@ con.cerrar();
                   console.log(xhr.status + ': ' + xhr.responseText)
               }
           });
+          }
+          
+      });
+      $('.episodio').on('click', function(e){
+          e.preventDefault();
+          $('.episodio').removeClass('list-group-item-success');
+          let reproductor = $('#reproductor');
+          let eleccion = $(this);
+          debugger;
+          reproductor.children().attr('src', '../videos/'+ eleccion.attr('data-path'));
+          reproductor[0].load();
+          eleccion.addClass('list-group-item-success');
       });
   </script>
     </body>

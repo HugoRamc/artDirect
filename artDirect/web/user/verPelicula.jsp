@@ -64,9 +64,10 @@ con.cerrar();
                 <div class="col-md-8">
                     <div class="embed-responsive embed-responsive-16by9">
                         <video class="embed-responsive-item" controls>
-                            <source src="<%=pelicula.getUrl()%>" type="video/avi">
                             <source src="<%=pelicula.getUrl()%>" type="video/mp4">
                             <source src="<%=pelicula.getUrl()%>" type="video/ogg">
+                            <source src="<%=pelicula.getUrl()%>" type="video/3gp">
+                            <source src="<%=pelicula.getUrl()%>" type="video/flv">
                         </video>
                     </div>
                 </div>
@@ -80,7 +81,7 @@ con.cerrar();
                     <%}%>
                     <p>
                     <div class="form-inline">
-                        <input type="number" class="form-control" name="puntuacion" id="puntuacion" min-value="0" max-value="10" required value="<%=pelicula.getPuntuacionUsuario()%>"/>
+                        <input type="number" class="form-control" name="puntuacion" id="puntuacion" min="0" max="10" required value="<%=pelicula.getPuntuacionUsuario()%>"/>
                         <input type="button" class="btn btn-primary" value="Puntuar" id="btn-calificar">
                     </div>
                     </p>
@@ -118,6 +119,9 @@ con.cerrar();
       });
       $("#btn-calificar").on('click', function (e) {
           e.preventDefault();
+          if (parseInt($('#puntuacion').val()) >10 || parseInt($('#puntuacion').val())<0){
+              alert("No es una calificación valida [0-10]")
+          } else{
           $.ajax({
               url: "/artDirect/Calificar",
               type: "POST",
@@ -136,6 +140,7 @@ con.cerrar();
                   console.log(xhr.status + ': ' + xhr.responseText)
               }
           });
+        }
       });
   </script>
     </body>
