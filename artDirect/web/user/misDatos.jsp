@@ -1,27 +1,31 @@
 <%@page import="java.sql.ResultSet"%>
 <%@page import="db.Conexion"%>
-<%@page contentType="text/html" pageEncoding="UTF-8" import="org.apache.jasper.JasperException"%>
 <%@page session="true"%>
 <%
     //validacion de las sesiones
-    /*try
-    {
         Object dat = request.getSession().getAttribute("correoUsu");
-        Object tipo = request.getSession().getAttribute("tipoUsuario");
+        Object tip = request.getSession().getAttribute("tipoUsuario");
         //out.print(tipo);
-         if(dat==null || tipo==null){
+        if(dat==null || tip==null){
            response.sendRedirect("../index.jsp");
-        }else{
+        }
              
-             String nombre,contra,tarjeta,cvv,mes,year;
+             String nombre,contra,tarjeta,cvv,mes="",year="";
              Conexion con = new Conexion();
              ResultSet s = con.consulta("spDatosUsuario", dat);
                      
              while(s.next()){
                 nombre = s.getString("nombre");
                 contra = s.getString("pass");
-                tarjeta = s.getString("");*/
-             
+                tarjeta = s.getString("numTarjeta");
+                cvv = s.getString("codSeguridad");
+                mes = s.getString("fechaVenc").split("-")[1];
+                year = s.getString("fechaVenc").split("-")[0];
+                
+                
+             }
+             out.print("El mes de la tarjeta   "+mes+" <br>");
+                out.print("El año de la tarjeta   "+year+" <br>");
               
          %>
 
@@ -61,8 +65,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="password" class="control-label">ContraseÃ±a</label>
-                        <input type="password" class="form-control" name="txtPassword" id="password"  placeholder="ConstraseÃ±a" required/>
+                        <label for="password" class="control-label">Contraseña</label>
+                        <input type="password" class="form-control" name="txtPassword" id="password"  placeholder="Constraseña" required/>
                     </div>
                     
                     <div class="form-group">
@@ -92,7 +96,7 @@
                                     <option value="12">12</option>
                                 </select>
                             </div>
-                            <label for="year" class="col-md-1 control-label">AÃ±o</label>
+                            <label for="year" class="col-md-1 control-label">Año</label>
                             <div class="col-md-3">
                                 <select class="form-control" name="txtyear" id="year" required>
                                     <%
@@ -108,7 +112,7 @@
                     </div>
                     <!--<div class="form-group">
                         <div class="checkbox">
-                            <label><input type="checkbox" name="tipo" value="1">Â¿Deseas registrarte como cineasta?</label>
+                            <label><input type="checkbox" name="tipo" value="1">¿Deseas registrarte como cineasta?</label>
                         </div>
                     </div>-->
                     
@@ -123,16 +127,8 @@
             </div>
         </div>
     </div>
-       <%
-           /*}
-           }
-    }catch(Exception ex){
-        response.sendRedirect("../index.jsp");
-    }*/
-    %>
+
        
-       
-       %>
         
     </body>
 </html>
