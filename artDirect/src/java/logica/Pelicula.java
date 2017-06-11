@@ -7,6 +7,7 @@ package logica;
 
 import db.Conexion;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -24,8 +25,11 @@ public class Pelicula {
     private boolean esFavorito;
     private int puntuacionUsuario;
     private String url;
+    private String descripcion;
+    private ArrayList<Actor> actores;
     public Pelicula (){
         this.categorias = new ArrayList<>();
+        this.actores = new ArrayList<>();
     }
 
     public String getTitulo() {
@@ -121,7 +125,6 @@ public class Pelicula {
             this.puntuacionUsuario = puntuacion;
         }
         con.cerrar();
-        
     }
 
     public String getUrl() {
@@ -131,5 +134,29 @@ public class Pelicula {
     public void setUrl(String url) {
         this.url = url;
     }
-        
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public ArrayList<Actor> getActores() {
+        return actores;
+    }
+
+    public void setActores() throws SQLException, Exception {
+        Conexion con = new Conexion();
+        ResultSet rs = con.consulta("spGetActors", this.id);
+        while (rs.next()) {
+            Actor actor = new Actor();
+            actor.setNombre(rs.getString("nombre"));
+            actor.setRol(rs.getString("rol"));
+            actores.add(actor);
+        }
+        con.cerrar();
+    }
+    
 }
