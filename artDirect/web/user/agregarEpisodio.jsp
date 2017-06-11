@@ -21,6 +21,23 @@
             idF = s.getInt("mensaje");
         }
         
+        String categorias[] = request.getParameterValues("catAgregada");
+        String nombreActores[] = request.getParameterValues("persona");
+        String papel[] = request.getParameterValues("papel");
+        
+        if(categorias != null){
+            for(String categoria:categorias){
+                int idC = Integer.parseInt(categoria);
+                conectar.consulta("spInsertarCategoria", idF, idC);
+            }
+        }
+
+        if(nombreActores != null){
+            for(int i = 0; i < nombreActores.length; i++){
+                conectar.consulta("spInsertarReparto", idF, nombreActores[i], papel[i]);
+            }
+        }
+        
         conectar.cerrar();
     }
     else{
