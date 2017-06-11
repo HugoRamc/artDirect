@@ -40,7 +40,7 @@
                     <a href="favoritos.jsp">Favoritos</a>
                 </li>
                 <li>
-                    <a href="perfil.jsp">Perfil</a>
+                    <a href="misDatos.jsp">Perfil</a>
                 </li>
                 
                 
