@@ -12,14 +12,8 @@
     // A esta pagina se deberia de mandar al usuario premium despues de iniciar sesion, y al artista si ya fue aprovado por el admin
     // Aqui declarar las variables de sesion para poder mostrar el menu correcto de navbarUsers y redirigir a otra pagina de ser necesario
     Conexion con = new Conexion();
-    String email = "mail5@gmail.com"; // eseto se deberia de obtener de las variables de sesión
+    String email = request.getSession().getAttribute("correoUsu").toString();
     ResultSet rs = con.consulta("spGetFavorites", email);
-    /*
-select f.idFilme, f.titulo, f.puntuacion, cine.nombreArtistico, f.tipo 
-from tblfilme f 
-inner join tbldirectores d on d.idFilme=f.idFilme
-inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
-    */
     if (rs == null){
         System.out.println("NULL");
     }
@@ -34,6 +28,7 @@ inner join tblcineastas cine on cine.idCineasta=d.idCineasta;
         pel.setCategorias();
         peliculas.add(pel);
     }
+    con.cerrar();
 %>
 <!DOCTYPE html>
 <html>

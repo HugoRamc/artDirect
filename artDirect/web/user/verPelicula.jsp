@@ -10,8 +10,9 @@
 <%
 System.out.println("El id aqui es: " + session.getAttribute("idContenido"));
 int idPelicula = (Integer)session.getAttribute("idContenido");
-String email = "mail5@gmail.com"; // eseto se deberia de obtener de las variables de sesión
+String email = request.getSession().getAttribute("correoUsu").toString();
 Conexion con = new Conexion();
+ServletContext context = request.getSession().getServletContext();
 ResultSet rs = con.consulta("spGetPelicula", idPelicula);
 Pelicula pelicula = new Pelicula();
 while (rs.next()) {
@@ -21,6 +22,8 @@ while (rs.next()) {
         pelicula.setAutor();
         pelicula.setTipo(rs.getInt("tipo"));
         pelicula.setCategorias();
+        pelicula.setUrl("../videos/" + rs.getString("ruta"));
+        System.out.println("../videos/" + rs.getString("ruta"));
         pelicula.setPuntuacionUsuario(email);
     }
 rs = con.consulta("spCheckFavorite", idPelicula, email);
@@ -42,9 +45,9 @@ con.cerrar();
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%=pelicula.getTitulo()%></title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="../css/barra.css">
     </head>
     <body>
@@ -60,8 +63,11 @@ con.cerrar();
             <div class="row">
                 <div class="col-md-8">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <video class="embed-responsive-item" controls="true">
-                            <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
+                        <video class="embed-responsive-item" controls>
+                            <source src="<%=pelicula.getUrl()%>" type="video/mp4">
+                            <source src="<%=pelicula.getUrl()%>" type="video/ogg">
+                            <source src="<%=pelicula.getUrl()%>" type="video/3gp">
+                            <source src="<%=pelicula.getUrl()%>" type="video/flv">
                         </video>
                     </div>
                 </div>
@@ -75,7 +81,7 @@ con.cerrar();
                     <%}%>
                     <p>
                     <div class="form-inline">
-                        <input type="number" class="form-control" name="puntuacion" id="puntuacion" min-value="0" max-value="10" required value="<%=pelicula.getPuntuacionUsuario()%>"/>
+                        <input type="number" class="form-control" name="puntuacion" id="puntuacion" min="0" max="10" required value="<%=pelicula.getPuntuacionUsuario()%>"/>
                         <input type="button" class="btn btn-primary" value="Puntuar" id="btn-calificar">
                     </div>
                     </p>
@@ -113,6 +119,9 @@ con.cerrar();
       });
       $("#btn-calificar").on('click', function (e) {
           e.preventDefault();
+          if (parseInt($('#puntuacion').val()) >10 || parseInt($('#puntuacion').val())<0){
+              alert("No es una calificación valida [0-10]")
+          } else{
           $.ajax({
               url: "/artDirect/Calificar",
               type: "POST",
@@ -131,6 +140,7 @@ con.cerrar();
                   console.log(xhr.status + ': ' + xhr.responseText)
               }
           });
+        }
       });
   </script>
     </body>

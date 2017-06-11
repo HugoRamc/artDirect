@@ -23,6 +23,7 @@ public class Pelicula {
     private int id;
     private boolean esFavorito;
     private int puntuacionUsuario;
+    private String url;
     public Pelicula (){
         this.categorias = new ArrayList<>();
     }
@@ -122,5 +123,13 @@ public class Pelicula {
         con.cerrar();
         
     }
-    
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+        
 }

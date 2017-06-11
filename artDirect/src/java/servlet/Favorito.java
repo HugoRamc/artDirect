@@ -40,8 +40,9 @@ public class Favorito extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             System.out.println(request.getParameter("film"));
             int idPelicula = Integer.parseInt(request.getParameter("film"));
+            String email = request.getSession().getAttribute("correoUsu").toString();
             Conexion con = new Conexion();
-            ResultSet rs = con.consulta("spAddFavorite", idPelicula, "mail5@gmail.com");
+            ResultSet rs = con.consulta("spAddFavorite", idPelicula, email);
             if (rs.next()) {
                 if (rs.getInt("existe") == 0) {
                     out.print("{\"favorito\":false}");
