@@ -21,12 +21,19 @@ public class EliminarFilme extends HttpServlet {
             
             Conexion conectar = new Conexion();
             String correo = (String)request.getSession().getAttribute("correoUsu");
+            String idUs = request.getParameter("idUs");
+            String redirigir = "user/contenido.jsp";
             int idF = Integer.parseInt(request.getParameter("idSerie"));
+            
+            if(idUs != null){
+                correo = idUs;
+                redirigir = "user/filmesAdmin.jsp";
+            }
             
             conectar.consulta("spEliminarFilme", correo, idF);
             
             conectar.cerrar();
-            response.sendRedirect("user/contenido.jsp");
+            response.sendRedirect(redirigir);
             
         }
     }

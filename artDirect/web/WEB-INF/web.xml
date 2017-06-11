@@ -8,6 +8,14 @@
         <servlet-name>agregarFilmeServlet</servlet-name>
         <servlet-class>servlet.agregarFilmeServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AceptarRechazarArtista</servlet-name>
+        <servlet-class>servlet.AceptarRechazarArtista</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>agregarEpisodioServlet</servlet-name>
+        <servlet-class>servlet.agregarEpisodioServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EliminarFilme</servlet-name>
         <url-pattern>/EliminarFilme</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>agregarFilmeServlet</servlet-name>
         <url-pattern>/agregarFilmeServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AceptarRechazarArtista</servlet-name>
+        <url-pattern>/AceptarRechazarArtista</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>agregarEpisodioServlet</servlet-name>
+        <url-pattern>/agregarEpisodioServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

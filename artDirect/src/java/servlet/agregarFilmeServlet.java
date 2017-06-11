@@ -26,7 +26,6 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 
-@WebServlet(name = "agregarFilmeServlet", urlPatterns = {"/"})
 @MultipartConfig
 
 public class agregarFilmeServlet extends HttpServlet {

@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-@WebServlet(name = "agregarEpisodioServlet", urlPatterns = {"/upload"})
 @MultipartConfig
 
 public class agregarEpisodioServlet extends HttpServlet {

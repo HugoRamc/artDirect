@@ -1,0 +1,13 @@
+.mensajeAdmin{
+    text-align: center;
+    margin-top: 20%;
+}
+
+.botonesAdmin{
+    text-align: right;
+}
+
+.botonSini{
+    display: inline-block;
+    margin: .5em 1em .4em 1em;
+}
