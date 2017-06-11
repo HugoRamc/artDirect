@@ -40,7 +40,8 @@ public class Calificar extends HttpServlet {
             int peli = Integer.parseInt(request.getParameter("film"));
             int calificacion = Integer.parseInt(request.getParameter("calificacion")); 
             Conexion con = new Conexion();
-            ResultSet rs = con.consulta("spPuntua", "mail5@gmail.com", peli, calificacion);
+            String email = request.getSession().getAttribute("correoUsu").toString();
+            ResultSet rs = con.consulta("spPuntua", email, peli, calificacion);
             if(rs.first()) {
                 System.out.println("Calificacion usuario: "+ rs.getString("resultado"));
             }

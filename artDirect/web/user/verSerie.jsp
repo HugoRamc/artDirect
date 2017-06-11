@@ -11,7 +11,8 @@
 <%
 System.out.println("El id aqui es: " + session.getAttribute("idContenido"));
 int idSerie = (Integer)session.getAttribute("idContenido");
-String email = "mail5@gmail.com"; // eseto se deberia de obtener de las variables de sesión
+System.out.println("El email: " + session.getAttribute("correoUsu"));
+String email = request.getSession().getAttribute("correoUsu").toString();
 Conexion con = new Conexion();
 ResultSet rs = con.consulta("spGetPelicula", idSerie);
 Serie serie = new Serie();

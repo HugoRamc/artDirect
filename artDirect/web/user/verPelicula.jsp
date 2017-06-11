@@ -10,8 +10,9 @@
 <%
 System.out.println("El id aqui es: " + session.getAttribute("idContenido"));
 int idPelicula = (Integer)session.getAttribute("idContenido");
-String email = "mail5@gmail.com"; // eseto se deberia de obtener de las variables de sesión
+String email = request.getSession().getAttribute("correoUsu").toString();
 Conexion con = new Conexion();
+ServletContext context = request.getSession().getServletContext();
 ResultSet rs = con.consulta("spGetPelicula", idPelicula);
 Pelicula pelicula = new Pelicula();
 while (rs.next()) {
@@ -21,6 +22,8 @@ while (rs.next()) {
         pelicula.setAutor();
         pelicula.setTipo(rs.getInt("tipo"));
         pelicula.setCategorias();
+        pelicula.setUrl("../videos/" + rs.getString("ruta"));
+        System.out.println("../videos/" + rs.getString("ruta"));
         pelicula.setPuntuacionUsuario(email);
     }
 rs = con.consulta("spCheckFavorite", idPelicula, email);
@@ -60,8 +63,10 @@ con.cerrar();
             <div class="row">
                 <div class="col-md-8">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <video class="embed-responsive-item" controls="true">
-                            <source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">
+                        <video class="embed-responsive-item" controls>
+                            <source src="<%=pelicula.getUrl()%>" type="video/avi">
+                            <source src="<%=pelicula.getUrl()%>" type="video/mp4">
+                            <source src="<%=pelicula.getUrl()%>" type="video/ogg">
                         </video>
                     </div>
                 </div>

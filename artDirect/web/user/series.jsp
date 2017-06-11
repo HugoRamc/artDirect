@@ -22,7 +22,7 @@
         serie.setId(rs.getInt("idFilme"));
         serie.setTitulo(rs.getString("titulo"));
         serie.setCalificacion(rs.getDouble("puntuacion"));
-        //serie.setAutor(rs.getString("nombreArtistico"));
+        serie.setAutor();
         serie.setTipo(rs.getInt("tipo"));
         serie.setCategorias();
         series.add(serie);
