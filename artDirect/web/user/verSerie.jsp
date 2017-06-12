@@ -1,3 +1,4 @@
+<%@page import="logica.Actor"%>
 <%@page import="logica.Episodio"%>
 <%@page import="logica.Serie"%>
 <%@page import="java.sql.ResultSet"%>
@@ -24,7 +25,9 @@ while (rs.next()) {
         serie.setAutor();
         serie.setTipo(rs.getInt("tipo"));
         serie.setCategorias();
+        serie.setDescripcion(rs.getString("descripcion"));
         serie.setEpisodios();
+        serie.setActores();
         serie.setPuntuacionUsuario(email);
 }
 rs = con.consulta("spCheckFavorite", idSerie, email);
@@ -72,6 +75,7 @@ con.cerrar();
                     </div>
                 </div>
                 <div class="col-md-4">
+                    <h4>Descripción: <%=serie.getDescripcion()%></h4>
                     <div class="col-md-12">
                         <div class="list-group">
                             <a class="list-group-item active">Lista de episodios</a>
@@ -107,7 +111,6 @@ con.cerrar();
                         <%}%>
                     </h3>
                 </div>
-
                 <div class="col-md-4">
                     <h3 class="form-inline">
                         <form id="form-calificar">
@@ -115,6 +118,23 @@ con.cerrar();
                         <input type="submit" class="btn btn-primary" value="Puntuar" id="btn-calificar">
                         </form>
                     </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="list-group">
+                    <%if (serie.getActores().size()>0) {%>
+                    <a class="list-group-item list-group-item-action active">
+                        <h4>Actores:</h4>
+                    </a>
+                    <%}%>
+                    <% for (Actor actor : serie.getActores()) {%>
+                    <a class="list-group-item">
+                        <h4 class="mb-1"><%=actor.getNombre()%></h4>
+                        <small><%=actor.getRol()%></small>
+                    </a>
+                    <%}%>
+                </div>
                 </div>
             </div>
         </div>

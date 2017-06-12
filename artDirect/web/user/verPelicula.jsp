@@ -1,3 +1,4 @@
+<%@page import="logica.Actor"%>
 <%@page import="logica.Pelicula"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="db.Conexion"%>
@@ -22,6 +23,8 @@ while (rs.next()) {
         pelicula.setAutor();
         pelicula.setTipo(rs.getInt("tipo"));
         pelicula.setCategorias();
+        pelicula.setActores();
+        pelicula.setDescripcion(rs.getString("descripcion"));
         pelicula.setUrl("../videos/" + rs.getString("ruta"));
         System.out.println("../videos/" + rs.getString("ruta"));
         pelicula.setPuntuacionUsuario(email);
@@ -72,6 +75,7 @@ con.cerrar();
                     </div>
                 </div>
                 <div class="col-md-4">
+                    <h4>Descripción: <%=pelicula.getDescripcion()%></h4>
                     <h3>Calificación: <span class="label label-default" id="puntaje"><%=pelicula.getCalificacion()%></span></h3>
                     <!--Cambiar por favorito y darle color rojo alv con btn-danger-->
                     <% if (pelicula.getEsFavorito()) { %>
@@ -85,6 +89,19 @@ con.cerrar();
                         <input type="button" class="btn btn-primary" value="Puntuar" id="btn-calificar">
                     </div>
                     </p>
+                    <div class="list-group">
+                        <%if (pelicula.getActores().size()>0) {%>
+                    <a class="list-group-item list-group-item-action active">
+                        <h4>Actores:</h4>
+                    </a>
+                    <%}%>
+                    <% for (Actor actor : pelicula.getActores()) {%>
+                    <a class="list-group-item">
+                        <h4 class="mb-1"><%=actor.getNombre()%></h4>
+                        <small><%=actor.getRol()%></small>
+                    </a>
+                    <%}%>
+                </div>
                 </div>
             </div>
         </div>
