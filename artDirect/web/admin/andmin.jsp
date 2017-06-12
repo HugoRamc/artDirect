@@ -99,7 +99,6 @@ function confirmDel()
                         <td><%out.print(s.getString("idUsuario"));      %></td>
                         <td><%out.print(s.getString("pass"));      %></td>
                         <td> <%out.print(s.getString("verificado"));      %></td>
-                        <td> <%out.print(s.getString("avatar"));      %></td>
                         <td> <%out.print(s.getString("tipousuario"));      %></td>
                         <td><a class="btn btn-default" href="cambios.jsp">Edit</a> <a class="btn btn-danger" onclick="confirmDel();" href="andmin.jsp">Delete</a></td>
                       </tr>

@@ -21,7 +21,7 @@
         if(dat!=null && dat2!=null){
             //out.print(dat.toString());
             if(dat2.toString().equals("administrador")){
-                //si es usuario redirige al administrador
+                response.sendRedirect("user/indexAdmin.jsp");
             }else{
                 //si es usuario normal o cinesta redirecciona a la parte del usuario
                 
@@ -37,7 +37,7 @@
     <section>
         <section id="fotoInicio">
             <h1>artDirect</h1> <br>
-            <h2>*inserte frase con doble sentido</h2>
+            <h2>Cine para mentes curiosas</h2>
         </section>
         <section class="row">
             <div class="">

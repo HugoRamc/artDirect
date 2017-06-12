@@ -80,14 +80,23 @@ public class modificaUsuario extends HttpServlet {
                 }
                 
             }else if(operacion.equals("Eliminar Usuario")){//si la operacion es eliminar al usuario
-                out.print("opcion de eliminar usuario");
+                
+                s = con.consulta("spEliminaUsuario", mail);
+               
+                while(s.next()){
+                    request.getSession().invalidate();
+                    out.print("<br>"+s.getString("resultado") + "<br>");
+                
+                }
+                
+                
             }else{
                 out.print("opcion no valida");
             }
             
            
             
-            out.print("<br><a href='/artDirect/user/indexU.jsp'>Regresar</a>");
+            out.print("<br><a href='/artDirect/index.jsp'>Regresar</a>");
             
             
             
