@@ -11,7 +11,7 @@ import java.sql.Statement;
 
 public class Conexion
 {
-    String nomBase="artDirect";
+    String nomBase="artdirect";
     String user="root";
     String pass = "root";
     String server = "localhost";

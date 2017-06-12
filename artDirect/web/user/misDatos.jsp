@@ -10,7 +10,7 @@
            response.sendRedirect("../index.jsp");
         }
              
-             String nombre,contra,tarjeta,cvv,mes="",year="";
+             String nombre="",contra="",tarjeta="",cvv="",mes="",year="";
              Conexion con = new Conexion();
              ResultSet s = con.consulta("spDatosUsuario", dat);
                      
@@ -24,8 +24,8 @@
                 
                 
              }
-             out.print("El mes de la tarjeta   "+mes+" <br>");
-                out.print("El año de la tarjeta   "+year+" <br>");
+            //out.print("El mes de la tarjeta   "+mes+" <br>");
+            //out.print("El año de la tarjeta   "+year+" <br>");
               
          %>
 
@@ -53,57 +53,70 @@
             </div> 
             <div class="main-login main-center">
                <!--Dar de alta al usuario-->
-                <form class="form-horizontal" method="post" action="alta.jsp">
+                <form class="form-horizontal" method="post" action="/artDirect/modificaUsuario">
                     <div class="form-group">
                         <label for="name" class="control-label">Nombre</label>
-                        <input type="text" class="form-control" name="txtNombre" id="name" value="<%%>"  placeholder="Nombre y Apellidos" required/>
+                        <input type="text" class="form-control" name="txtNombre" id="name" value="<%=nombre%>"  placeholder="Nombre y Apellidos" required/>
                     </div>
 
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label for="email" class="control-label">Correo Electronico</label>
-                        <input type="text" class="form-control" name="txtEmail" id="email"  placeholder="Ingresa un email valido" required/>
-                    </div>
+                        <input type="text" class="form-control" name="txtEmail" id="email" value="<%=dat%>"  placeholder="Ingresa un email valido" required/>
+                    </div>-->
                     
                     <div class="form-group">
                         <label for="password" class="control-label">Contraseña</label>
                         <input type="password" class="form-control" name="txtPassword" id="password"  placeholder="Constraseña" required/>
                     </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">Repite la Contraseña</label>
+                        <input type="password" class="form-control" name="txtPassword2" id="password2"  placeholder="Constraseña" required/>
+                    </div>
                     
                     <div class="form-group">
                         <label for="tarjeta" class="control-label">Tarjeta de credito</label>
-                        <input type="text" class="form-control" name="txtTarjeta" id="tarjeta" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required/>
+                        <input type="text" class="form-control" name="txtTarjeta" value="<%=tarjeta%>" id="tarjeta" maxlength="19" placeholder="XXXX XXXX XXXX XXXX" required/>
                     </div>
                     <div class="form-group">
                         <div class="form-group row">
                             <label for="cvv" class="col-md-1 control-label">CVV</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" name="txtcvv" id="cvv"  placeholder="CVV" required/>
+                                <input type="text" class="form-control" name="txtcvv" value="<%=cvv%>" id="cvv"  placeholder="CVV" required/>
                             </div>
                             <label for="mes" class="col-md-1 control-label">Mes</label>
                             <div class="col-md-3">
                                 <select class="form-control" name="txtmes" id="mes" required>
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                    <option value="07">07</option>
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
+                                    <%
+                                    for (int i=1; i<13; i++){
+                                            if(mes.equals(i)){
+                                                %>
+                                                <option value="<%=i%>" selected=""><%=i%></option>
+                                                <%
+                                            }else{
+                                                %>
+                                                <option value="<%=i%>"><%=i%></option>
+                                                <%
+                                            }
+                                        
+                                    }
+                                    %>
                                 </select>
                             </div>
                             <label for="year" class="col-md-1 control-label">Año</label>
                             <div class="col-md-3">
                                 <select class="form-control" name="txtyear" id="year" required>
                                     <%
-                                    for (int i=17; i<36; i++){
-                                    %>
-                                    <option value="<%=i%>"><%=i%></option>
-                                    <%
+                                    for (int i=2017; i<2036; i++){
+                                            if(year.equals(i)){
+                                                %>
+                                                <option value="<%=i%>" selected=""><%=i%></option>
+                                                <%
+                                            }else{
+                                                %>
+                                                <option value="<%=i%>"><%=i%></option>
+                                                <%
+                                            }
+                                        
                                     }
                                     %>
                                 </select>
