@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#" data-toggle="modal" data-target="#myModal">Iniciar Sesi髇</a>
+                    <a href="#" data-toggle="modal" data-target="#myModal">Iniciar Sesi贸n</a>
                 </li>
                 <li>
                     <a href="alta.jsp">Registrarse</a>
@@ -25,19 +25,19 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">x</span></button>
-                <h4 class="modal-title" id="lineModalLabel">Iniciar Sesi髇</h4>
+                <h4 class="modal-title" id="lineModalLabel">Iniciar Sesi贸n</h4>
             </div>
             <div class="modal-body">
-                <form action="/artDirect/redirige" method="post">
+                <form action="/redirige" method="post">
                     <div class="form-group">
-                        <label for="login-email">Correo electr髇ico</label>
+                        <label for="login-email">Correo electr贸nico</label>
                         <input type="email" class="form-control" name="login-email">
                     </div>
                     <div class="form-group">
-                        <label for="login-pass">Contrase馻</label>
+                        <label for="login-pass">Contrase帽a</label>
                         <input type="password" class="form-control" name="login-pass">
                     </div>
-                    <input type="submit" class="btn btn-info" name="login-submit" value="Iniciar Sesi髇">
+                    <input type="submit" class="btn btn-info" name="login-submit" value="Iniciar Sesi贸n">
                     <input type="button" class="btn btn-danger" data-dismiss="modal" value="Cerrar">
 
                 </form>
