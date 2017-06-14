@@ -11,7 +11,8 @@
 <%
 System.out.println("El id aqui es: " + session.getAttribute("idContenido"));
 int idPelicula = (Integer)session.getAttribute("idContenido");
-String email = request.getSession().getAttribute("correoUsu").toString();
+Object temp = request.getSession().getAttribute("correoUsu");
+String email = temp.toString();
 Conexion con = new Conexion();
 ServletContext context = request.getSession().getServletContext();
 ResultSet rs = con.consulta("spGetPelicula", idPelicula);
