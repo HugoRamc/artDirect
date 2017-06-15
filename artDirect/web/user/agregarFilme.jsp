@@ -34,7 +34,7 @@
                 <div class="col-xs-3"></div>
                 <div class="col-xs-6">
                     <div class="contenedor-filme">
-                        <form class="formularioAgregar" action="/artDirect/agregarFilmeServlet" method="post" enctype="multipart/form-data">
+                        <form class="formularioAgregar" action="/agregarFilmeServlet" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="name" class="control-label">Nombre de la película</label>
                                 <input type="text" class="form-control" name="txtNombre" id="name"  placeholder="Nombre del filme" required/>
