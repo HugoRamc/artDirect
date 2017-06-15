@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 </form>
-                <form action="/artDirect/redirige" method="post" class="navbar-form navbar-right">
+                <form action="/redirige" method="post" class="navbar-form navbar-right">
                     <button type="submit" class="btn btn-default" aria-label="">
                         Salir
                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
