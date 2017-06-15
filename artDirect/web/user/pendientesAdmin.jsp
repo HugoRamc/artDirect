@@ -41,7 +41,7 @@
                 %>
                         
                 <div class = "list-group-item">
-                    <form action="/artDirect/AceptarRechazarArtista">
+                    <form action="/AceptarRechazarArtista">
                         <input type="hidden" name="artistaAR" value="<%=idUsr%>">
                         <div class="row">
                             <div class="col-xs-7">
