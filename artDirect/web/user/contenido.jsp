@@ -113,7 +113,7 @@
                     <%
                         }
                     %>
-                    <form action="/artDirect/EliminarFilme" style="display: inline-block">
+                    <form action="/EliminarFilme" style="display: inline-block">
                         <input type="hidden" name="idSerie" value="<%=id%>">
                         <button name="eliminarFilme" class="btn btn-default btnBorrar">Eliminar</button>
                     </form>
