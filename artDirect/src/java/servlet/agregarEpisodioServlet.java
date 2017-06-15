@@ -40,7 +40,7 @@ public class agregarEpisodioServlet extends HttpServlet {
             
             final String path = request.getRealPath("/") + "videos";
             final Part part = request.getPart("archivoEpisodio");
-            final String nombreArchivo = quitarPuntos(nombreEpisodio) + getFileName(part);
+            final String nombreArchivo = quitarPuntos(nombreEpisodio) + "_" + getFileName(part);
             
             
             Conexion conectar = new Conexion();
@@ -117,7 +117,7 @@ public class agregarEpisodioServlet extends HttpServlet {
         for (String content : part.getHeader("content-disposition").split(";")) {
             if (content.trim().startsWith("filename")) {
                 return content.substring(
-                        content.indexOf('=') + 1).trim().replace("\"", "");
+                        content.lastIndexOf("\\") + 1, content.length()-1);
             }
         }
         return null;
