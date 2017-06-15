@@ -25,7 +25,7 @@
                 
              }
             //out.print("El mes de la tarjeta   "+mes+" <br>");
-            //out.print("El año de la tarjeta   "+year+" <br>");
+            //out.print("El aÃ±o de la tarjeta   "+year+" <br>");
               
          %>
 
@@ -53,7 +53,7 @@
             </div> 
             <div class="main-login main-center">
                <!--Dar de alta al usuario-->
-                <form class="form-horizontal" method="post" action="/artDirect/modificaUsuario">
+                <form class="form-horizontal" method="post" action="/modificaUsuario">
                     <div class="form-group">
                         <label for="name" class="control-label">Nombre</label>
                         <input type="text" class="form-control" name="txtNombre" id="name" value="<%=nombre%>"  placeholder="Nombre y Apellidos" required/>
@@ -65,12 +65,12 @@
                     </div>-->
                     
                     <div class="form-group">
-                        <label for="password" class="control-label">Contraseña</label>
-                        <input type="password" class="form-control" name="txtPassword" id="password"  placeholder="Constraseña" required/>
+                        <label for="password" class="control-label">ContraseÃ±a</label>
+                        <input type="password" class="form-control" name="txtPassword" id="password"  placeholder="ConstraseÃ±a" required/>
                     </div>
                     <div class="form-group">
-                        <label for="password" class="control-label">Repite la Contraseña</label>
-                        <input type="password" class="form-control" name="txtPassword2" id="password2"  placeholder="Constraseña" required/>
+                        <label for="password" class="control-label">Repite la ContraseÃ±a</label>
+                        <input type="password" class="form-control" name="txtPassword2" id="password2"  placeholder="ConstraseÃ±a" required/>
                     </div>
                     
                     <div class="form-group">
@@ -102,7 +102,7 @@
                                     %>
                                 </select>
                             </div>
-                            <label for="year" class="col-md-1 control-label">Año</label>
+                            <label for="year" class="col-md-1 control-label">AÃ±o</label>
                             <div class="col-md-3">
                                 <select class="form-control" name="txtyear" id="year" required>
                                     <%
@@ -125,7 +125,7 @@
                     </div>
                     <!--<div class="form-group">
                         <div class="checkbox">
-                            <label><input type="checkbox" name="tipo" value="1">¿Deseas registrarte como cineasta?</label>
+                            <label><input type="checkbox" name="tipo" value="1">Â¿Deseas registrarte como cineasta?</label>
                         </div>
                     </div>-->
                     
