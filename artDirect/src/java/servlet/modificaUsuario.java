@@ -96,7 +96,7 @@ public class modificaUsuario extends HttpServlet {
             
            
             
-            out.print("<br><a href='/artDirect/index.jsp'>Regresar</a>");
+            out.print("<br><a href='/index.jsp'>Regresar</a>");
             
             
             
