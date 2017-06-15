@@ -113,7 +113,7 @@ con.cerrar();
           console.log("Hola");
           
           $.ajax({
-              url: "/artDirect/Favorito",
+              url: "/Favorito",
               type: "POST",
               data: {"film": $('#peli-id').val()},
               success: function (json) {
@@ -141,7 +141,7 @@ con.cerrar();
               alert("No es una calificación valida [0-10]")
           } else{
           $.ajax({
-              url: "/artDirect/Calificar",
+              url: "/Calificar",
               type: "POST",
               data: {
                   "film": $('#peli-id').val(),
