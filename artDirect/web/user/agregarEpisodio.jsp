@@ -66,7 +66,7 @@
                 <div class="col-xs-6">
                     <div class="titulo-agregar">Agregar episodio a la serie: <%=nombre%></div>
                     <div class="contenedor-filme">
-                        <form action="/artDirect/agregarEpisodioServlet" method="post" enctype="multipart/form-data">
+                        <form action="/agregarEpisodioServlet" method="post" enctype="multipart/form-data">
                             <input type="hidden" value="<%=idF%>" name="idFilmeSerie">
                             <input type="hidden" value="<%=nombre%>" name="nombreSerie">
                             <div class="form-group">
