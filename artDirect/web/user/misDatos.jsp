@@ -81,7 +81,7 @@
                         <div class="form-group row">
                             <label for="cvv" class="col-md-1 control-label">CVV</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" name="txtcvv" value="<%=cvv%>" id="cvv"  placeholder="CVV" required/>
+                                <input type="text" class="form-control" name="txtcvv" value="<%=cvv%>" id="cvv" maxlength="3" placeholder="CVV" required/>
                             </div>
                             <label for="mes" class="col-md-1 control-label">Mes</label>
                             <div class="col-md-3">
@@ -106,7 +106,7 @@
                             <div class="col-md-3">
                                 <select class="form-control" name="txtyear" id="year" required>
                                     <%
-                                    for (int i=2017; i<2036; i++){
+                                    for (int i=17; i<36; i++){
                                             if(year.equals(i)){
                                                 %>
                                                 <option value="<%=i%>" selected=""><%=i%></option>
