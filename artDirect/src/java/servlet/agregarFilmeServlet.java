@@ -42,7 +42,7 @@ public class agregarFilmeServlet extends HttpServlet {
             String correo = (String)sesion.getAttribute("correoUsu");
             final String path = request.getRealPath("/") + "videos"; //si lo se, esta depreciado pero me vale
             final Part part = request.getPart("archivo");
-            final String nombreArchivo = quitarPuntos(correo) + getFileName(part);
+            final String nombreArchivo = quitarPuntos(correo) + "_" + getFileName(part);
             
             String nombrePeli = request.getParameter("txtNombre");
             String desc = request.getParameter("desc");
@@ -147,7 +147,7 @@ public class agregarFilmeServlet extends HttpServlet {
         for (String content : part.getHeader("content-disposition").split(";")) {
             if (content.trim().startsWith("filename")) {
                 return content.substring(
-                        content.indexOf('=') + 1).trim().replace("\"", "");
+                        content.lastIndexOf("\\") + 1, content.length()-1);
             }
         }
         return null;
