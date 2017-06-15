@@ -114,7 +114,7 @@
                         <div class="form-group row">
                             <label for="cvv" class="col-md-1 control-label">CVV</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" name="txtcvv" id="cvv"  placeholder="CVV" required/>
+                                <input type="text" class="form-control" name="txtcvv" id="cvv" maxlength="3" placeholder="CVV" required/>
                             </div>
                             <label for="mes" class="col-md-1 control-label">Mes</label>
                             <div class="col-md-3">
