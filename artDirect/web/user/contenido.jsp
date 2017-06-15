@@ -75,7 +75,7 @@
                     int id = peli.getId();
                     String nom = peli.getTitulo();
                 %>
-                <a href ="/artDirect/Ver?q=<%=peli.getId()%>" class = "list-group-item">
+                <a href ="/Ver?q=<%=peli.getId()%>" class = "list-group-item">
                     <h4 class = "list-group-item-heading">
                         <%=peli.getTitulo()%><br>
                         <p><small>by <strong><%=peli.getAutor()%></strong></small></p>
