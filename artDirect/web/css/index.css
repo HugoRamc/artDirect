@@ -1,5 +1,6 @@
-
+@import url('https://fonts.googleapis.com/css?family=Courgette');
 #fotoInicio{
+    font-family: 'Courgette', cursive;
     background-image: url("../images/palomitas2.png");
     background-size: cover;
     height: 90vh;
@@ -8,11 +9,52 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 
+}
+
+#fotoInicio > h1{
+       font-size: 1000%;
+    
+}
+
+.fotos{
+    display: inline-block;
+   
+    width: 90vw;
+    display: inline-block;
+}
+
+#foto1{
+  
+    width: 49%;
+    display: inline-block;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+}
+
+#foto2{
+   
+    width: 49%;
+    display: inline-block;
+    text-align: center;
+}
+
+.row > span{
+    padding-left: 15vw;
+    font-size: 200%;
+    
+}
+
+span > h1{
+    font-size: 200%;
+    color: #101010;
 }
 
 .row
 {
+   
     padding-top: 5vh;
     width: 99.75vw;
     padding-left:3vw;
@@ -33,6 +75,8 @@
     background-color: #8e9b97;
     border-color: #8e9b97;
     border-style: dashed;
+    padding-top: 5vh;
+    padding-bottom: 7vh;
 }
 
 .row3

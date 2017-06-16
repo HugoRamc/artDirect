@@ -40,13 +40,27 @@
             <h2>Cine para mentes curiosas</h2>
         </section>
         <section class="row">
-            <div class="">
-                ¿Que es artDirect?
-            </div>
+            
+            <span>
+                <h1> ¿Que es artDirect?</h1><br>
+                <p>artDirect es una aplicación web diseñada para la difusión de cine de arte y cine independiente</p>
+            </span>
+            
+                <div class="fotos">
+                    <div id="foto1">
+                        <image src="images/cine.png"/>
+                    </div>
+                    <div id="foto2">
+                        <image src="images/compu.png"/>
+                    </div>
+                        
+                </div>
+                
+            
         </section>
     </section>
     <footer>
-        <!--<section class="row2">
+        <section class="row2">
             <h1>Nuestro Equipo:</h1>
             <div class="imagen">
                 <div class="centra">
@@ -59,7 +73,7 @@
                     <img src="images/hugo.jpg" class="img-circle img-responsive tamFoto"/><br>
                 </div>
                 Hugo Ramírez <br>
-                <!--<a href="https://www.twitter.com/Hugoramc" target="_blank">@Hugoramc</a>
+                <a href="https://www.twitter.com/Hugoramc" target="_blank">@Hugoramc</a>
             </div>
             <div class="imagen">
                 <div class="centra">
@@ -72,33 +86,6 @@
                     <img src="images/sebastian.jpg" class="img-circle img-responsive tamFoto"/><br>
                 </div>
                 Sebastian Saldaña
-            </div>
-        </section>-->
-        <section class="row2">
-            <div class="imagen">
-                <div class="centra">
-                    <img src="images/carmen.jpg" class="img-circle img-responsive tamFoto"/><br>
-                </div>
-                Carmen García
-            </div>
-            <div class="imagen">
-                <div class="centra">
-                    <img src="images/ian.jpg" class="img-circle img-responsive tamFoto"/><br>
-                </div>
-                Ian Mendoza <br>
-            </div>
-            <div class="imagen">
-                <div class="centra">
-                    <img src="images/tona.jpg" class="img-circle img-responsive tamFoto"/><br>
-                </div>
-                Tonatihu Barrera
-            </div>
-             <div class="imagen">
-                <div class="centra">
-                    <img src="images/hugo.jpg" class="img-circle img-responsive tamFoto"/><br>
-                </div>
-                Hugo Ramírez <br>
-                <!--<a href="https://www.twitter.com/Hugoramc" target="_blank">@Hugoramc</a>-->
             </div>
         </section>
     </footer>
